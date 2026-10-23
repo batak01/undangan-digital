@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3b080a">
+
+  <title>Undangan Pernikahan | Pebrin & Hanna</title>
+
+  <link rel="stylesheet" href="assets/undangan.css">
+
+</head>
+
+<body class="lock-scroll">
+
+  <!-- Ganti dengan file musik milik kalian -->
+  <audio id="weddingMusic" loop preload="none">
+    <source src="assets/sada_ma_hita_nadua.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Tombol musik -->
+  <button
+    class="music-control"
+    id="musicBtn"
+    type="button"
+    aria-label="Putar musik"
+    aria-pressed="false"
+    hidden
+  >
+    <span aria-hidden="true">♫</span>
+  </button>
+
+  <!-- COVER -->
+  <section class="cover-page" id="coverPage" aria-label="Cover undangan">
+
+    <!-- Ornamen daun SVG -->
+    <div class="corner top-left" aria-hidden="true">
+      <svg viewBox="0 0 180 180" fill="none">
+        <g stroke="currentColor" stroke-width="1.5">
+          <path d="M-10 8 Q65 30 130 100"/>
+          <path d="M14 8 Q35 48 72 54 Q48 20 14 8Z" fill="#d9a63d"/>
+          <path d="M34 22 Q62 62 100 68 Q76 32 34 22Z" fill="#f4d58a"/>
+          <path d="M55 42 Q88 70 118 102 Q105 63 55 42Z" fill="#b77b19"/>
+          <path d="M78 63 Q112 88 137 125 Q129 83 78 63Z" fill="#f4d58a"/>
+          <path d="M99 84 Q126 111 143 151 Q143 112 99 84Z" fill="#d9a63d"/> 
+          <!-- Daun cabang bagian atas -->
+          <path d="M48 37 Q24 23 23 7 Q46 13 48 37Z"
+                fill="#f4d58a"/>
+
+          <path d="M61 47 Q68 20 94 17 Q87 43 61 47Z"
+                fill="#d9a63d"/>
+
+          <!-- Daun sisi luar -->
+          <path d="M76 64 Q46 54 39 32 Q65 38 76 64Z"
+                fill="#b77b19"/>
+
+          <path d="M91 78 Q112 52 139 57 Q124 79 91 78Z"
+                fill="#f4d58a"/>
+
+          <!-- Daun cabang bagian tengah -->
+          <path d="M108 95 Q83 88 73 67 Q98 73 108 95Z"
+                fill="#d9a63d"/>
+
+          <path d="M122 111 Q145 89 164 99 Q148 116 122 111Z"
+                fill="#f4d58a"/>
+
+        </g>
+      </svg>
+    </div>
+
+    <div class="corner top-right" aria-hidden="true">
+      <svg viewBox="0 0 180 180" fill="none">
+        <g stroke="currentColor" stroke-width="1.5">
+          <path d="M-10 8 Q65 30 130 100"/>
+          <path d="M14 8 Q35 48 72 54 Q48 20 14 8Z" fill="#d9a63d"/>
+          <path d="M34 22 Q62 62 100 68 Q76 32 34 22Z" fill="#f4d58a"/>
+          <path d="M55 42 Q88 70 118 102 Q105 63 55 42Z" fill="#b77b19"/>
+          <path d="M78 63 Q112 88 137 125 Q129 83 78 63Z" fill="#f4d58a"/>
+          <path d="M99 84 Q126 111 143 151 Q143 112 99 84Z" fill="#d9a63d"/>
+
+          <!-- Daun cabang bagian atas -->
+          <path d="M48 37 Q24 23 23 7 Q46 13 48 37Z"
+                fill="#f4d58a"/>
+
+          <path d="M61 47 Q68 20 94 17 Q87 43 61 47Z"
+                fill="#d9a63d"/>
+
+          <!-- Daun sisi luar -->
+          <path d="M76 64 Q46 54 39 32 Q65 38 76 64Z"
+                fill="#b77b19"/>
+
+          <path d="M91 78 Q112 52 139 57 Q124 79 91 78Z"
+                fill="#f4d58a"/>
+
+          <!-- Daun cabang bagian tengah -->
+          <path d="M108 95 Q83 88 73 67 Q98 73 108 95Z"
+                fill="#d9a63d"/>
+
+          <path d="M122 111 Q145 89 164 99 Q148 116 122 111Z"
+                fill="#f4d58a"/>
+
+        </g>
+      </svg>
+    </div>
+
+    <div class="corner bottom-left" aria-hidden="true">
+      <svg viewBox="0 0 180 180" fill="none">
+        <g stroke="currentColor" stroke-width="1.5">
+          <path d="M-10 8 Q65 30 130 100"/>
+          <path d="M14 8 Q35 48 72 54 Q48 20 14 8Z" fill="#d9a63d"/>
+          <path d="M34 22 Q62 62 100 68 Q76 32 34 22Z" fill="#f4d58a"/>
+          <path d="M55 42 Q88 70 118 102 Q105 63 55 42Z" fill="#b77b19"/>
+          <path d="M78 63 Q112 88 137 125 Q129 83 78 63Z" fill="#f4d58a"/>
+          <path d="M99 84 Q126 111 143 151 Q143 112 99 84Z" fill="#d9a63d"/>
+
+            <!-- Daun cabang bagian atas -->
+            <path d="M48 37 Q24 23 23 7 Q46 13 48 37Z"
+                  fill="#f4d58a"/>
+
+            <path d="M61 47 Q68 20 94 17 Q87 43 61 47Z"
+                  fill="#d9a63d"/>
+
+            <!-- Daun sisi luar -->
+            <path d="M76 64 Q46 54 39 32 Q65 38 76 64Z"
+                  fill="#b77b19"/>
+
+            <path d="M91 78 Q112 52 139 57 Q124 79 91 78Z"
+                  fill="#f4d58a"/>
+
+            <!-- Daun cabang bagian tengah -->
+            <path d="M108 95 Q83 88 73 67 Q98 73 108 95Z"
+                  fill="#d9a63d"/>
+
+            <path d="M122 111 Q145 89 164 99 Q148 116 122 111Z"
+                  fill="#f4d58a"/>
+
+        </g>
+      </svg>
+    </div>
+
+    <div class="corner bottom-right" aria-hidden="true">
+      <svg viewBox="0 0 180 180" fill="none">
+        <g stroke="currentColor" stroke-width="1.5">
+          <path d="M-10 8 Q65 30 130 100"/>
+          <path d="M14 8 Q35 48 72 54 Q48 20 14 8Z" fill="#d9a63d"/>
+          <path d="M34 22 Q62 62 100 68 Q76 32 34 22Z" fill="#f4d58a"/>
+          <path d="M55 42 Q88 70 118 102 Q105 63 55 42Z" fill="#b77b19"/>
+          <path d="M78 63 Q112 88 137 125 Q129 83 78 63Z" fill="#f4d58a"/>
+          <path d="M99 84 Q126 111 143 151 Q143 112 99 84Z" fill="#d9a63d"/>
+
+          <!-- Daun cabang bagian atas -->
+          <path d="M48 37 Q24 23 23 7 Q46 13 48 37Z"
+                fill="#f4d58a"/>
+
+          <path d="M61 47 Q68 20 94 17 Q87 43 61 47Z"
+                fill="#d9a63d"/>
+
+          <!-- Daun sisi luar -->
+          <path d="M76 64 Q46 54 39 32 Q65 38 76 64Z"
+                fill="#b77b19"/>
+
+          <path d="M91 78 Q112 52 139 57 Q124 79 91 78Z"
+                fill="#f4d58a"/>
+
+          <!-- Daun cabang bagian tengah -->
+          <path d="M108 95 Q83 88 73 67 Q98 73 108 95Z"
+                fill="#d9a63d"/>
+
+          <path d="M122 111 Q145 89 164 99 Q148 116 122 111Z"
+                fill="#f4d58a"/>
+
+        </g>
+      </svg>
+    </div>
+
+
+    <!-- Animasi dua burung pada cover undangan -->
+    <div class="wedding-birds" aria-hidden="true">
+
+      <!-- Burung pertama -->
+      <span class="flying-bird flying-bird--one">
+        <svg viewBox="0 0 80 50" fill="none">
+          <g class="bird-wings">
+            <path
+              class="bird-wing bird-wing--left"
+              d="M39 27 Q23 3 5 8 Q16 25 39 30Z"
+              fill="#f4d58a"
+            />
+            <path
+              class="bird-wing bird-wing--right"
+              d="M39 27 Q53 5 74 10 Q61 27 39 30Z"
+              fill="#d9a63d"
+            />
+          </g>
+          <path
+            d="M31 27 Q39 31 49 24 Q44 34 34 34Z"
+            fill="#f4d58a"
+          />
+        </svg>
+      </span>
+
+      <!-- Burung kedua -->
+      <span class="flying-bird flying-bird--two">
+        <svg viewBox="0 0 80 50" fill="none">
+          <g class="bird-wings">
+            <path
+              class="bird-wing bird-wing--left"
+              d="M39 27 Q23 3 5 8 Q16 25 39 30Z"
+              fill="#f4d58a"
+            />
+            <path
+              class="bird-wing bird-wing--right"
+              d="M39 27 Q53 5 74 10 Q61 27 39 30Z"
+              fill="#d9a63d"
+            />
+          </g>
+          <path
+            d="M31 27 Q39 31 49 24 Q44 34 34 34Z"
+            fill="#f4d58a"
+          />
+        </svg>
+      </span>
+
+    </div>
+
+
+    <main class="cover-center">
+
+      <header class="cover-header">
+        <p class="eyebrow">The Wedding Of</p>
+        <div class="header-divider" aria-hidden="true">
+          <span class="diamond"></span>
+        </div>
+      </header>
+
+      <div class="name-medallion" aria-hidden="true">
+        <div class="medallion-glow"></div>
+
+        <!-- Cincin luar -->
+        <div class="medallion-ring ring-outer"></div>
+
+        <!-- Cincin bermotif geometris -->
+        <div class="medallion-pattern"></div>
+
+        <!-- Cincin detail -->
+        <div class="medallion-ring ring-inner"></div>
+
+        <!-- Pusat medali -->
+        <div class="medallion-core"></div>
+
+        <!-- Empat ornamen utama -->
+        <span class="medallion-ornament ornament-top">✥</span>
+        <span class="medallion-ornament ornament-bottom">✥</span>
+        <span class="medallion-ornament ornament-left">❖</span>
+        <span class="medallion-ornament ornament-right">❖</span>
+
+        <!-- Kilau emas -->
+        <span class="medallion-shine shine-one"></span>
+        <span class="medallion-shine shine-two"></span>
+        </div>
+
+
+      <div class="couple-names">
+        <p class="name">Pebrin</p>
+        <span class="ampersand">&amp;</span>
+        <p class="name">Hanna</p>
+      </div>
+
+      <div class="guest-box">
+        <p class="guest-label">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+        <p class="guest-name" id="namaTamu">Tamu Undangan</p>
+      </div>
+
+      <button
+        class="btn-open"
+        id="openBtn"
+        type="button"
+      >
+        ✦ Buka Undangan ✦
+      </button>
+
+      <div>
+        <p class="wedding-date">05.12.2026</p>
+        <div class="date-divider" aria-hidden="true">
+          <span class="diamond"></span>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="cover-footer">
+      PEBRIN &amp; HANNA
+    </footer>
+
+  </section>
+
+  <!-- HALAMAN ISI SEMENTARA -->
+  <main class="main-content" id="mainContent">
+    <div class="main-content-inner">
+
+      <!-- PHOTO SLIDER SECTION -->
+      <section class="photo-slider reveal-section" data-direction="right" aria-label="Galeri foto sample">
+        <div class="slider-track">
+          <figure class="slider-slide active" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80');"></figure>
+          <figure class="slider-slide" style="background-image: url('https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80');"></figure>
+
+          <div class="slider-overlay">
+            <p class="eyebrow-verse">The Wedding Of</p>
+            <h1>Pebrin &amp; Hanna</h1>
+          </div>
+        </div>
+
+        <div class="countdown-wrap">
+          <div class="countdown-container" aria-label="Hitung mundur pernikahan">
+            <div class="countdown-box">
+              <span class="countdown-number" id="days">00</span>
+              <span class="countdown-label">Hari</span>
+            </div>
+
+            <div class="countdown-box">
+              <span class="countdown-number" id="hours">00</span>
+              <span class="countdown-label">Jam</span>
+            </div>
+
+            <div class="countdown-box">
+              <span class="countdown-number" id="minutes">00</span>
+              <span class="countdown-label">Menit</span>
+            </div>
+
+            <div class="countdown-box">
+              <span class="countdown-number" id="seconds">00</span>
+              <span class="countdown-label">Detik</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION QUOTE / AYAT SUCI (STRUKTUR BARU) -->
+      <section class="sacred-quote-section reveal-section" aria-label="Quote pernikahan">
+        <div class="sacred-quote-card">
+          <!-- PASTIKAN KELASNYA ADALAH sacred-quote-text -->
+          <p class="sacred-quote-text">Hendaklah kamu sehati sepikir, dalam satu hati, satu jiwa, satu tujuan. Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu apa yang dipersatukan oleh Allah, tidak boleh diceraikan manusia.</p>
+          <span class="sacred-quote-source">(Filipi 2: 2b; Matius 19 : 6)</span>
+        </div>
+      </section>
+
+      <!-- GROOM SECTION -->
+      <section class="groom-section profile-section--groom reveal-section" data-direction="bottom" aria-label="Profil mempelai pria">
+        <div class="groom-bride" aria-hidden="true">The Groom & The Bride</div>
+        <div class="groom-showcase">
+          <span class="groom-slide-label" aria-hidden="true">The Groom</span>
+
+          <div class="groom-carousel" aria-label="Galeri foto mempelai pria">
+            <figure class="groom-slide active" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="groom-slide" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="groom-slide" style="background-image: url('https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="groom-slide" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="groom-slide" style="background-image: url('https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="groom-slide" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80');"></figure>
+          </div>
+        </div>
+
+        <div class="groom-bio">
+          <h3>Pebrin Pardede</h3>
+          <p>Putra Ketiga Dari Bapak H. Pardede (†)<br>&amp; Ibu P Br. Tampubolon, S.Pd</p>
+        </div>
+      </section>
+
+      <!-- BRIDE SECTION -->
+      <section class="bride-section profile-section--bride reveal-section" data-direction="bottom" aria-label="Profil mempelai wanita">
+        <div class="bride-and" aria-hidden="true">and</div>
+
+        <div class="bride-showcase">
+          <span class="bride-slide-label" aria-hidden="true">The Bride</span>
+          <div class="bride-carousel" aria-label="Galeri foto mempelai wanita">
+            <figure class="bride-slide active" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="bride-slide" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="bride-slide" style="background-image: url('https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="bride-slide" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="bride-slide" style="background-image: url('https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=80');"></figure>
+            <figure class="bride-slide" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80');"></figure>
+          </div>
+        </div>
+
+        <div class="bride-bio">
+          <h3>Hanna Magdalena</h3>
+          <p>Putri Pertama Dari Bapak B. Hutabarat<br>&amp; Ibu D Br. Hutabarat</p>
+        </div>
+      </section>
+
+      <!-- WEDDING DAY SECTION -->
+      <section class="wedding-day reveal-section" data-direction="bottom" aria-label="Detail acara pernikahan">
+        <div class="section-heading">
+          <!-- <p class="eyebrow-verse">Wedding Day</p> -->
+          <h2>Save The Date</h2>
+        </div>
+
+        <div class="event-grid">
+          <article class="event-card">
+            <span class="event-tag event-tag--primary">Pemberkatan Pernikahan</span>
+            <h3>Sabtu, 05 Desember 2026</h3>
+            <p class="event-time">10.00 - 12.00 WIB</p>
+            <p class="event-place">GEREJA HKBP PANOMBEAN SIURSA</p>
+          </article>
+
+          <article class="event-card highlight-card">
+            <span class="event-tag event-tag--highlight">Resepsi</span>
+            <h3>Sabtu, 05 Desember 2026</h3>
+            <p class="event-time">12.00 WIB - Selesai</p>
+            <p class="event-place">GOR HKBP PANOMBEAN SIURSA</p>
+          </article>
+
+          <article class="event-card">
+            <span class="event-tag event-tag--primary">Alamat</span>
+            <h3>Dusun III Silakkidir, Kec. Hutabayuraja</h3>
+            <p class="event-time">Simalungun</p>
+            <p class="event-place">Menerima dengan senang hati dan penuh syukur</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- STORY SECTION -->
+      <section class="story-section reveal-section" data-direction="bottom" aria-label="Kisah Cinta">
+        <div class="section-heading">
+          <p class="eyebrow-verse">Our Journey</p>
+          <h2>Love Story</h2>
+        </div>
+
+        <div class="story-timeline">
+          
+          <!-- Timeline Item 1 -->
+          <div class="story-item">
+            <div class="story-marker">
+              <span class="story-diamond">♦</span>
+            </div>
+            <div class="story-card">
+              <span class="story-date">18 Juni 2025</span>
+              <h3>Awal Bertemu</h3>
+              <p>Semua berawal dari sebuah perkenalan sederhana. Seiring waktu, rasa itu tumbuh perlahan, hingga akhirnya kami berani mengungkapkan perasaan yang selama ini tersimpan. Dari sanalah, kisah cinta kami mulai terukir.</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="story-item">
+            <div class="story-marker">
+              <span class="story-diamond">♦</span>
+            </div>
+            <div class="story-card">
+              <span class="story-date">1 Maret 2026</span>
+              <h3>Mengikat Janji</h3>
+              <p>Setelah melewati berbagai proses dan saling mengenal lebih jauh, kami semakin yakin untuk melangkah bersama. Dengan niat yang tulus, kami memutuskan untuk melangkah ke jenjang yang lebih serius dengan komitmen penuh kasih.</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="story-item">
+            <div class="story-marker">
+              <span class="story-diamond">♦</span>
+            </div>
+            <div class="story-card">
+              <span class="story-date">5 Desember 2026</span>
+              <h3>Menuju Pernikahan</h3>
+              <p>Dengan penuh rasa syukur kepada Tuhan dan restu kedua orang tua, kami bersiap memulai babak baru hidup kami dalam ikatan suci pernikahan.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- GALLERY SECTION -->
+      <section class="gallery-section reveal-section" data-direction="bottom" aria-label="Galeri Foto Pernikahan">
+        <div class="section-heading">
+          <!-- <p class="eyebrow-verse">Sweet Moments</p> -->
+          <h2>Photo Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+
+          <!-- BARIS ATAS: 2 SLIDE, KE KIRI -->
+          <div class="gallery-row gallery-row--top"
+              data-direction="left"
+              data-delay="0">
+
+            <div class="gallery-track">
+
+              <div class="gallery-slide gallery-slide--wide">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
+                    alt="Wedding moment 1" loading="lazy">
+                <div class="gallery-overlay"><span>✦</span></div>
+              </div>
+
+              <div class="gallery-slide gallery-slide--wide">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80"
+                    alt="Wedding moment 2" loading="lazy">
+                <div class="gallery-overlay"><span>✦</span></div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- BARIS TENGAH: 3 SLIDE, MASING-MASING 4 FOTO -->
+            <div class="gallery-row gallery-row--middle"
+                data-direction="right"
+                data-delay="1200">
+
+              <div class="gallery-track">
+
+                <!-- SLIDE 1 -->
+                <div class="gallery-slide gallery-slide--group">
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 3" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 4" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 5" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 6" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="gallery-slide gallery-slide--group">
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 7" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 8" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 9" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 10" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="gallery-slide gallery-slide--group">
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 11" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 12" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 13" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                  <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 14" loading="lazy">
+                    <div class="gallery-overlay"><span>✦</span></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          <!-- BARIS BAWAH: 2 SLIDE, KE KANAN -->
+          <div class="gallery-row gallery-row--bottom"
+              data-direction="right"
+              data-delay="0">
+
+            <div class="gallery-track">
+
+              <div class="gallery-slide gallery-slide--wide">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80"
+                    alt="Wedding moment 15" loading="lazy">
+                <div class="gallery-overlay"><span>✦</span></div>
+              </div>
+
+              <div class="gallery-slide gallery-slide--wide">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80"
+                    alt="Wedding moment 16" loading="lazy">
+                <div class="gallery-overlay"><span>✦</span></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- RSVP SECTION -->
+      <section class="rsvp-section reveal-section" data-direction="bottom" aria-label="Konfirmasi Kehadiran">
+        <div class="section-heading">
+          <!-- <p class="eyebrow-verse">Join Our Joy</p> -->
+          <h2>RSVP &amp; Wishes</h2>
+        </div>
+
+        <form class="rsvp-form" id="rsvpForm">
+          <!-- Input Nama -->
+          <div class="form-group">
+            <label for="rsvpName">Nama Lengkap</label>
+            <input type="text" id="rsvpName" name="name" placeholder="Masukkan nama Anda..." required>
+          </div>
+
+          <!-- Pilihan Kehadiran -->
+          <div class="form-group">
+            <label>Konfirmasi Kehadiran</label>
+            <div class="attendance-options">
+              <label class="attendance-btn">
+                <input type="radio" name="attendance" value="Hadir" checked>
+                <span class="btn-pill">✦ Hadir</span>
+              </label>
+              <label class="attendance-btn">
+                <input type="radio" name="attendance" value="Tidak Hadir">
+                <span class="btn-pill">✕ Tidak Hadir</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Jumlah Tamu -->
+          <div class="form-group">
+            <label for="rsvpGuests">Jumlah Tamu</label>
+            <select id="rsvpGuests" name="guests">
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+              <option value="3">3 Orang</option>
+            </select>
+          </div>
+
+          <!-- Pesan / Ucapan Doa -->
+          <div class="form-group">
+            <label for="rsvpMessage">Ucapan &amp; Doa</label>
+            <textarea id="rsvpMessage" name="message" rows="4" placeholder="Tuliskan ucapan & doa untuk kedua mempelai..." required></textarea>
+          </div>
+
+          <!-- Tombol Kirim -->
+          <button type="submit" class="btn-submit-rsvp">
+            <span>✦ Kirim Konfirmasi ✦</span>
+          </button>
+        </form>
+
+        <!-- Daftar Ucapan dari Tamu -->
+        <div class="wishes-container">
+          <div class="wishes-heading">
+            <p class="wishes-eyebrow">WEDDING GUESTBOOK</p>
+            <h3 class="wishes-title">Ucapan &amp; Doa</h3>
+            <p class="wishes-subtitle">
+              Doa dan kasih dari keluarga serta sahabat
+            </p>
+          </div>
+          <div class="wishes-list" id="wishesList">
+          </div>
+        </div>
+      </section>
+
+      <!-- GIFT SECTION -->
+      <section class="gift-section reveal-section" data-direction="bottom" aria-label="Amplop Digital dan Kado">
+        <div class="section-heading">
+          <p class="eyebrow-verse">Wedding Gift</p>
+          <h2>Send Gift</h2>
+          <p class="gift-intro">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat menyampaikannya melalui:</p>
+        </div>
+
+        <!-- Tombol Interaktif untuk Memunculkan Kartu -->
+        <div class="gift-action-wrapper">
+          <button type="button" class="btn-toggle-gift" id="toggleGiftBtn" onclick="toggleGiftCards()">
+            <span>✦ Klik Disini ✦</span>
+          </button>
+        </div>
+
+        <!-- Bungkus Grid Kartu dengan Kontainer yang awalnya tersembunyi -->
+        <div class="gift-grid-container" id="giftGridContainer">
+          <div class="gift-grid">
+            <!-- Kartu 1: Real Look BCA -->
+            <div class="real-card card-bca">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-chip"></div>
+                  <span class="card-logo-text">BCA</span>
+                </div>
+                <div class="card-number-wrapper">
+                  <span class="card-label">NOMOR REKENING</span>
+                  <p class="card-number" id="accNumber1">1234 5678 90</p>
+                </div>
+                <div class="card-bottom">
+                  <div class="card-holder">
+                    <span class="card-label">PEMILIK REKENING</span>
+                    <p class="holder-name">PEBRIN PARDEDE</p>
+                  </div>
+                  <button type="button" class="btn-copy-card" onclick="copyToClipboard('accNumber1', this)">
+                    <span>Salin</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kartu 2: Real Look BNI -->
+            <div class="real-card card-bni">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="card-chip"></div>
+                  <span class="card-logo-text">BNI</span>
+                </div>
+                <div class="card-number-wrapper">
+                  <span class="card-label">NOMOR REKENING</span>
+                  <p class="card-number" id="accNumber2">0987 6543 21</p>
+                </div>
+                <div class="card-bottom">
+                  <div class="card-holder">
+                    <span class="card-label">PEMILIK REKENING</span>
+                    <p class="holder-name">HANNA MAGDALENA</p>
+                  </div>
+                  <button type="button" class="btn-copy-card" onclick="copyToClipboard('accNumber2', this)">
+                    <span>Salin</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kartu 3: E-Wallet DANA -->
+            <div class="real-card card-dana">
+              <div class="card-inner">
+                <div class="card-top">
+                  <div class="dana-logo">DANA</div>
+                  <span class="card-logo-text">E-WALLET</span>
+                </div>
+                <div class="card-number-wrapper">
+                  <span class="card-label">NOMOR DANA</span>
+                  <p class="card-number" id="accNumber3">0812 3456 7890</p>
+                </div>
+                <div class="card-bottom">
+                  <div class="card-holder">
+                    <span class="card-label">ATAS NAMA</span>
+                    <p class="holder-name">PEBRIN PARDEDE</p>
+                  </div>
+                  <button type="button" class="btn-copy-card" onclick="copyToClipboard('accNumber3', this)">
+                    <span>Salin</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLOSING SECTION -->
+      <section class="closing-section reveal-section" data-direction="bottom" aria-label="Penutup Undangan">
+        <div class="closing-card">
+          <!-- Monogram / Inisial Emas -->
+          <div class="closing-monogram">P <span>&amp;</span> H</div>
+
+          <p class="eyebrow-verse">Warmest Thanks</p>
+          <h2 class="closing-title">Terima Kasih</h2>
+
+          <p class="closing-text">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu bagi pernikahan kami.
+          </p>
+
+          <!-- <p class="closing-quote">
+            “Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.”
+            <span class="closing-quote-author">— Matius 19:6</span>
+          </p> -->
+
+          <!-- Frame Foto Penutup Mempelai -->
+          <div class="closing-photo-frame">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80" alt="Pebrin & Hanna Closing Moment" loading="lazy">
+            <div class="photo-overlay-shine"></div>
+          </div>
+
+          <div class="closing-signature">
+            <p class="signature-sub">Kami yang berbahagia,</p>
+            <h3 class="signature-names">Pebrin &amp; Hanna</h3>
+            <p class="signature-families">Beserta Keluarga Besar Kedua Mempelai</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="wedding-footer">
+        <div class="footer-content">
+          <p class="footer-credits">Designed with Love for Pebrin</p>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="assets/undangan.js"></script>
+
+</body>
+</html>
