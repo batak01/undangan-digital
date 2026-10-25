@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="goldenDivider" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" class="w-full h-auto drop-shadow-[0_0_15px_rgba(234,179,8,0.25)]">
+                    <defs>
+                        <!-- Ultra Rich Gold Metallic Linear Gradient -->
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8F5E12"></stop>
+                            <stop offset="15%" stop-color="#D9A441"></stop>
+                            <stop offset="30%" stop-color="#FFF5C2"></stop>
+                            <stop offset="45%" stop-color="#E2A838"></stop>
+                            <stop offset="60%" stop-color="#FFFFFF"></stop>
+                            <stop offset="75%" stop-color="#DAA031"></stop>
+                            <stop offset="90%" stop-color="#FCEBA4"></stop>
+                            <stop offset="100%" stop-color="#704400"></stop>
+                        </linearGradient>
+
+                        <!-- Secondary Soft Gold Gradient for Fading Lines -->
+                        <linearGradient id="lineFadeLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#8F5E12" stop-opacity="0.2"></stop>
+                            <stop offset="40%" stop-color="#E2A838"></stop>
+                            <stop offset="100%" stop-color="#FFF5C2"></stop>
+                        </linearGradient>
+
+                        <linearGradient id="lineFadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#FFF5C2"></stop>
+                            <stop offset="60%" stop-color="#E2A838"></stop>
+                            <stop offset="100%" stop-color="#8F5E12" stop-opacity="0.2"></stop>
+                        </linearGradient>
+
+                        <!-- Soft Radial Glow -->
+                        <radialGradient id="glowEffect" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#FFE885" stop-opacity="0.6"></stop>
+                            <stop offset="50%" stop-color="#D49B00" stop-opacity="0.15"></stop>
+                            <stop offset="100%" stop-color="#000000" stop-opacity="0"></stop>
+                        </radialGradient>
+
+                        <!-- Sparkle Gradient -->
+                        <linearGradient id="sparkleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFFFFF"></stop>
+                            <stop offset="50%" stop-color="#FFF4BC"></stop>
+                            <stop offset="100%" stop-color="#E1AC36"></stop>
+                        </linearGradient>
+
+                        <!-- Blur Filter for Light Flares -->
+                        <filter id="lightGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
+                            <feMerge>
+                                <feMergeNode in="blur"></feMergeNode>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Background Soft Ambient Light Glows -->
+                    <g opacity="0.5">
+                        <circle cx="600" cy="118" r="90" fill="url(#glowEffect)"></circle>
+                        <circle cx="240" cy="115" r="45" fill="url(#glowEffect)"></circle>
+                        <circle cx="960" cy="115" r="45" fill="url(#glowEffect)"></circle>
+                    </g>
+
+                    <!-- FILIGREE PATHS (FINE RENDERED STROKES) -->
+                    <g class="divider-paths" fill="none" stroke="url(#goldGradient)" stroke-width="3.9" stroke-linecap="round" stroke-linejoin="round">
+                        
+                        <!-- LEFT HORIZONTAL LINE & END SWIRL -->
+                        <path d="M 40,115 L 340,115 C 362,115 372,102 360,98 C 348,94 345,110 358,114 C 368,118 375,108 368,102" stroke="url(#lineFadeLeft)"></path>
+
+                        <!-- RIGHT HORIZONTAL LINE & END SWIRL -->
+                        <path d="M 1160,115 L 860,115 C 838,115 828,102 840,98 C 852,94 855,110 842,114 C 832,118 825,108 832,102" stroke="url(#lineFadeRight)"></path>
+
+                        <!-- CENTER HEART ORNAMENT (Ramping & Presisi) -->
+                        <!-- Heart Main Body -->
+                        <path d="M 600,165 
+                                 C 568,136 505,86 538,50 
+                                 C 565,20 598,54 600,66 
+                                 C 602,54 635,20 662,50 
+                                 C 695,86 632,136 600,165 Z"></path>
+
+                        <!-- Outer Upper Swirls (Sayap Atas Melengkung Halus) -->
+                        <path d="M 600,135 
+                                 C 560,105 480,70 432,95 
+                                 C 395,114 410,135 430,128 
+                                 C 445,122 440,104 425,110"></path>
+
+                        <path d="M 600,135 
+                                 C 640,105 720,70 768,95 
+                                 C 805,114 790,135 770,128 
+                                 C 755,122 760,104 775,110"></path>
+
+                        <!-- Inner Lower Curls (Melungkar Halus Di Bawah Hati) -->
+                        <path d="M 548,126 
+                                 C 500,122 462,136 478,154 
+                                 C 494,170 512,152 498,138 
+                                 C 485,126 468,138 480,148"></path>
+
+                        <path d="M 652,126 
+                                 C 700,122 738,136 722,154 
+                                 C 706,170 688,152 702,138 
+                                 C 715,126 732,138 720,148"></path>
+
+                        <!-- Hanging Small Ring and Diamond Pendant -->
+                        <path d="M 600,165 L 600,173"></path>
+                        <polygon points="600,175 609,188 600,204 591,188" fill="url(#goldGradient)" stroke-width="0.8"></polygon>
+                    </g>
+
+                    <!-- SPARKLE FLARES & KILAU BINTANG -->
+                    <!-- Center Pendant Sparkle Light -->
+                    <g transform="translate(600, 188)" filter="url(#lightGlow)">
+                        <path d="M 0,-18 Q 0,0 18,0 Q 0,0 0,18 Q 0,0 -18,0 Q 0,0 0,-18 Z" fill="url(#sparkleGrad)"></path>
+                        <circle cx="0" cy="0" r="3" fill="#FFFFFF"></circle>
+                    </g>
+
+                    <!-- Left Line Sparkle -->
+                    <g transform="translate(240, 115) scale(0.75)" filter="url(#lightGlow)">
+                        <path d="M 0,-18 Q 0,0 18,0 Q 0,0 0,18 Q 0,0 -18,0 Q 0,0 0,-18 Z" fill="url(#sparkleGrad)"></path>
+                        <circle cx="0" cy="0" r="3" fill="#FFFFFF"></circle>
+                    </g>
+
+                    <!-- Right Line Sparkle -->
+                    <g transform="translate(960, 115) scale(0.75)" filter="url(#lightGlow)">
+                        <path d="M 0,-18 Q 0,0 18,0 Q 0,0 0,18 Q 0,0 -18,0 Q 0,0 0,-18 Z" fill="url(#sparkleGrad)"></path>
+                        <circle cx="0" cy="0" r="3" fill="#FFFFFF"></circle>
+                    </g>
+
+                    <!-- Subtle Sparkle on Heart Top -->
+                    <g transform="translate(600, 66) scale(0.4)" filter="url(#lightGlow)">
+                        <path d="M 0,-15 Q 0,0 15,0 Q 0,0 0,15 Q 0,0 -15,0 Q 0,0 0,-15 Z" fill="url(#sparkleGrad)"></path>
+                    </g>
+                </svg>
