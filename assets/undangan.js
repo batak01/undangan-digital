@@ -30,6 +30,121 @@ const musicBtn = document.getElementById("musicBtn");
 const musik = document.getElementById("weddingMusic");
 
 let undanganDibuka = false;
+let countdownAnimationFinished = false;
+
+function inisialisasiCountdownReveal() {
+  const countdownBoxes = document.querySelectorAll(
+    ".main-content.content-opened .countdown-box"
+  );
+
+  const sacredQuote = document.querySelector(
+    ".sacred-quote-section"
+  );
+
+  if (!countdownBoxes.length || !sacredQuote) return;
+
+  const lastCountdownBox = countdownBoxes[countdownBoxes.length - 1];
+
+  
+  const finishCountdownAnimation = () => {
+    countdownAnimationFinished = true;
+
+    // Beri izin Sacred Quote untuk mulai reveal.
+    sacredQuote.classList.add("countdown-animation-finished");
+
+    // Coba aktifkan animasi kata setelah countdown selesai.
+    aktifkanAnimasiTeksSacredQuote();
+  };
+
+
+  // Hormati pengaturan reduced motion.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    finishCountdownAnimation();
+    return;
+  }
+
+  // Jika animasi sudah selesai sebelum listener dipasang.
+  if (
+    getComputedStyle(lastCountdownBox).animationName === "none" ||
+    lastCountdownBox.dataset.animationFinished === "true"
+  ) {
+    finishCountdownAnimation();
+    return;
+  }
+
+  lastCountdownBox.addEventListener(
+    "animationend",
+    (event) => {
+      if (event.animationName !== "countdownBoxEnter") return;
+
+      lastCountdownBox.dataset.animationFinished = "true";
+      finishCountdownAnimation();
+    },
+    { once: true }
+  );
+}
+
+
+
+function aktifkanAnimasiTeksSacredQuote() {
+  const sacredQuote = document.querySelector(
+    ".sacred-quote-section"
+  );
+
+  if (!sacredQuote) return;
+
+  // Tunggu sampai section terlihat dan countdown selesai.
+  if (
+    !sacredQuote.classList.contains("is-visible") ||
+    !sacredQuote.classList.contains(
+      "countdown-animation-finished"
+    )
+  ) {
+    return;
+  }
+
+  // Jangan mulai ulang animasi yang sudah dimulai.
+  if (
+    sacredQuote.classList.contains(
+      "text-animation-ready"
+    )
+  ) {
+    return;
+  }
+
+  const words = sacredQuote.querySelectorAll(
+    ".sacred-quote-text .word-span"
+  );
+
+  if (!words.length) return;
+
+  // Siapkan kondisi awal setiap kata.
+  words.forEach((word) => {
+    word.style.opacity = "0";
+    word.style.transform = "translateY(12px)";
+    word.style.filter = "blur(5px)";
+  });
+
+  // Pastikan browser menerapkan kondisi awal.
+  void sacredQuote.offsetHeight;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      sacredQuote.classList.add(
+        "text-animation-ready"
+      );
+
+      // Kembalikan kontrol animasi ke CSS.
+      words.forEach((word) => {
+        word.style.removeProperty("opacity");
+        word.style.removeProperty("transform");
+        word.style.removeProperty("filter");
+      });
+    });
+  });
+}
+
+
 
 // Mengubah status visual tombol musik (Play / Pause)
 function aturStatusMusik(isPlaying) {
@@ -62,10 +177,14 @@ async function bukaUndangan() {
   musicBtn.classList.add("visible");
 
   // Aktifkan kontainer utama untuk memicu animasi konten
-  const mainContent = document.getElementById("mainContent");
-  if (mainContent) {
-    mainContent.classList.add("content-opened");
-  }
+ const mainContent = document.getElementById("mainContent");
+
+if (mainContent) {
+  mainContent.classList.add("content-opened");
+
+  // Tunggu animasi countdown selesai sebelum mengizinkan quote reveal.
+  inisialisasiCountdownReveal();
+}
 
   // 👉 TARO DI SINI AGAR TEKS LANGSUNG TER-SPLIT SAAT TOMBOL DIBUKA
   inisialisasiSequentialText();
@@ -118,7 +237,6 @@ if (musik) {
   musik.addEventListener("ended", () => aturStatusMusik(false));
   musik.addEventListener("error", () => aturStatusMusik(false));
 }
-
 
 // =========================================================
 // 3. COUNTDOWN HITUNG MUNDUR PERNIKAHAN (WIB / UTC+7)
@@ -216,8 +334,12 @@ function inisialisasiReveal() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        } else {
+        entry.target.classList.add("is-visible");
+
+        if (entry.target.matches(".sacred-quote-section")) {
+          aktifkanAnimasiTeksSacredQuote();
+        }
+      } else {
           // TAMBAHKAN INI JIKA MAU ANIMASI BERULANG KETIKA DI-SCROLL NAIK-TURUN
           entry.target.classList.remove("is-visible");
         }

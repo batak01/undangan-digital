@@ -803,21 +803,23 @@ button {
 /* =========================================================
    REVEAL SECTION GLOBAL (UNTUK SEMUA SECTION BARU & LAMA)
    ========================================================= */
+
 .reveal-section {
   opacity: 0;
   transform: translateY(35px);
   filter: blur(5px);
-  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 1s ease;
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease;
   will-change: opacity, transform, filter;
 }
 
 /* Reveal global: tampil ketika observer mengaktifkan section */
 .reveal-section.is-visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  filter: blur(0) !important;
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 /* Ayat suci: hanya mengikuti status observer */
@@ -1011,9 +1013,11 @@ button {
    END SECTION: PHOTO SLIDER UTAMA & COUNTDOWN (PERBAIKAN MEWAH)
    ========================================================= */
 
+
 /* =========================================================
-   SECTION AYAT SUCI (LANGSUNG JALAN SAAT BUKA UNDANGAN)
+   SACRED QUOTE — SINGLE REVEAL SYSTEM
    ========================================================= */
+
 .sacred-quote-section {
   position: relative;
   width: 100%;
@@ -1021,24 +1025,26 @@ button {
   margin: 24px auto;
   padding: 0 4px;
   box-sizing: border-box;
-  
-  /* State awal tersembunyi */
+
+  /* Reveal awal section */
   opacity: 0;
   transform: translateY(35px);
   filter: blur(6px);
-  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 1.2s ease;
+
+  transition:
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s ease;
 }
 
-/* KETIKA UNDANGAN DIBUKA (.content-opened), SECTION LANGSUNG MUNCUL */
-.main-content.content-opened .sacred-quote-section {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  filter: blur(0) !important;
+/* Section mengikuti reveal global */
+.sacred-quote-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-/* Kartu Pembungkus Mewah */
+/* Card */
 .sacred-quote-card {
   position: relative;
   display: flex;
@@ -1046,99 +1052,38 @@ button {
   align-items: center;
   justify-content: center;
   padding: 36px 28px;
+
   background: rgba(255, 248, 235, 0.95);
   border: 1px solid rgba(195, 145, 62, 0.45);
   border-radius: 22px;
-  box-shadow: 0 16px 36px rgba(33, 3, 4, 0.3),
-              inset 0 0 20px rgba(244, 213, 138, 0.25);
-  text-align: center;
-}
 
-/* Teks Utama Ayat */
-.sacred-quote-text {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(0.98rem, 2.7vw, 1.12rem);
-  line-height: 1.75;
-  font-style: italic;
-  color: #3b080a;
-  margin-bottom: 18px;
-}
+  box-shadow:
+    0 16px 36px rgba(33, 3, 4, 0.3),
+    inset 0 0 20px rgba(244, 213, 138, 0.25);
 
-/* ANIMASI WORD-SPAN: Langsung jalan begitu kontainer dibuka dengan sedikit jeda setelah slider */
-.sacred-quote-text .word-span {
-  display: inline-block !important;
-  opacity: 0 !important;
-  transform: translateY(12px) !important;
-  filter: blur(5px) !important;
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
-              filter 0.8s ease !important;
-  /* Jeda waktu bertahap per kata + jeda tunggu slider selesai (misal 1.2s) */
-  transition-delay: calc(var(--word-index, 0) * 0.035s + 1.2s) !important;
-}
-
-/* Kata ayat mengikuti status reveal section */
-.sacred-quote-section.is-visible .sacred-quote-text .word-span {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  filter: blur(0) !important;
-}
-
-/* Animasi ulang ayat saat scroll setelah undangan dibuka */
-.main-content.content-opened
-.sacred-quote-section.is-visible
-.sacred-quote-text .word-span {
-  transition-delay:
-    calc(var(--word-index, 0) * 0.035s) !important;
-}
-
-/* =========================================================
-   SECTION AYAT SUCI (KONTAINER UTUH + ELEMEN STAGGERED)
-   ========================================================= */
-/* 1. Wrapper Utama Section */
-.sacred-quote-section {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  margin: 24px auto;
-  padding: 0 4px;
-  box-sizing: border-box;
-}
-
-/* 2. KONTAINER UTAMA (CARD) - Ini yang bergerak utuh seperti section groom */
-.sacred-quote-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 36px 28px;
-  background: rgba(255, 248, 235, 0.95);
-  border: 1px solid rgba(195, 145, 62, 0.45);
-  border-radius: 22px;
-  box-shadow: 0 16px 36px rgba(33, 3, 4, 0.3),
-              inset 0 0 20px rgba(244, 213, 138, 0.25);
   text-align: center;
 
-  /* State awal card: tersembunyi & sedikit turun */
+  /* Reveal awal card */
   opacity: 0;
   transform: translateY(35px);
   filter: blur(4px);
 
-  /* Transisi dua arah (masuk & keluar layar) untuk card */
-  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 1s ease;
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease;
 }
 
-/* KETIKA SECTION DIBUKA DAN VISIBLE, CARD MUNCUL UTUH */
-.main-content.content-opened .sacred-quote-section.is-visible .sacred-quote-card {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  filter: blur(0) !important;
+/* Card muncul mengikuti status section */
+.main-content.content-opened
+.sacred-quote-section.is-visible
+.sacred-quote-card {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-/* 3. Teks Utama Ayat (Di dalam card) - State Awal */
+/* Teks ayat */
 .sacred-quote-text {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(0.98rem, 2.7vw, 1.12rem);
@@ -1148,38 +1093,54 @@ button {
   margin-bottom: 18px;
 }
 
-.sacred-quote-section .word-span {
-  display: inline-block !important;
-  opacity: 0 !important;
-  transform: translateY(12px) !important;
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transition-delay: calc(var(--word-index, 0) * 0.025s + 0.15s) !important;
+/* Animasi kata per kata */
+.sacred-quote-text .word-span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(5px);
+
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s ease;
+
+  transition-delay:
+    calc(var(--word-index, 0) * 0.12s + 0.15s);
 }
 
-/* Saat Card Visible, Teks Mengalir */
-.main-content.content-opened .sacred-quote-section.is-visible .word-span {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+/* Kata muncul ketika section terlihat */
+.sacred-quote-section.is-visible.text-animation-ready
+.sacred-quote-text .word-span {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-/* 4. Sumber Ayat / Referensi (Di dalam card) */
+/* Referensi ayat */
 .sacred-quote-source {
   position: relative;
   display: inline-block;
+
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #6c451b;
+
   padding-top: 12px;
-  
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+
+  transition:
+    opacity 0.7s ease 0.3s,
+    transform 0.7s ease 0.3s;
 }
 
-.main-content.content-opened .sacred-quote-section.is-visible .sacred-quote-source {
+/* Referensi mengikuti reveal section */
+.main-content.content-opened
+.sacred-quote-section.is-visible
+.sacred-quote-source {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1190,13 +1151,27 @@ button {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+
   width: 44px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c3913e, transparent);
+
+  background:
+    linear-gradient(90deg, transparent, #c3913e, transparent);
 }
+
+/* Tahan reveal awal sampai countdown selesai */
+.main-content.content-opened
+.sacred-quote-section.reveal-section:not(.countdown-animation-finished) {
+  opacity: 0 !important;
+  transform: translateY(35px) !important;
+  filter: blur(6px) !important;
+  transition: none !important;
+}
+
 /* =========================================================
-   END SECTION AYAT SUCI (LANGSUNG JALAN SAAT BUKA UNDANGAN)
+   END SACRED QUOTE
    ========================================================= */
+
 
 /* ==========================================
    GROOM SECTION - CARD STYLE MATCHING IMAGE
@@ -1287,11 +1262,6 @@ button {
   transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
-}
-
-.reveal-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Showcase: foto dan label memiliki kolom terpisah */
@@ -4087,3 +4057,515 @@ button {
   pointer-events: none;
   z-index: 6;
 }
+
+
+/* =====================================================
+   NEW WEDDING COVER — VELVET MAROON & GOLD
+   Integrasi aman dengan cover lama
+===================================================== */
+
+.cover-page.wedding-cover {
+  /* Palet khusus cover baru */
+  --wc-burgundy: #31070c;
+  --wc-burgundy-dark: #170306;
+  --wc-burgundy-light: #4b1017;
+  --wc-gold: #d9ad58;
+  --wc-gold-light: #f7e7b5;
+  --wc-cream: #fff3d4;
+
+  /* Pertahankan perilaku cover lama */
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
+  padding: clamp(32px, 6vh, 64px) 20px;
+  overflow: hidden;
+  isolation: isolate;
+
+  color: var(--wc-cream);
+  text-align: center;
+
+  background: var(--wc-burgundy-dark);
+}
+
+/* Background velvet */
+.wedding-cover__background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-color: var(--wc-burgundy-dark);
+  background-image: url("./velvet-background.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transform: scale(1.02);
+  animation: wc-background-reveal 1.2s ease-out both;
+}
+
+/* Lapisan gelap untuk menjaga keterbacaan teks */
+.wedding-cover__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(75, 16, 23, 0.08) 0%,
+      rgba(23, 3, 6, 0.25) 55%,
+      rgba(15, 2, 4, 0.68) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(23, 3, 6, 0.20) 0%,
+      transparent 35%,
+      rgba(23, 3, 6, 0.30) 100%
+    );
+}
+
+/* Konten utama cover */
+.wedding-cover__content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+
+  animation: wc-content-arrive 1s ease-out both;
+}
+
+/* Judul atas */
+.wedding-cover__eyebrow {
+  margin: 0 0 24px;
+
+  color: var(--wc-gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(12px, 2.8vw, 15px);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  line-height: 1.6;
+  text-transform: uppercase;
+
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Bingkai medali */
+.wedding-cover__frame {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: min(78vw, 340px);
+  aspect-ratio: 1 / 1;
+
+  padding: 38px 24px;
+
+  border: 1px solid rgba(217, 173, 88, 0.8);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(75, 16, 23, 0.58),
+      rgba(23, 3, 6, 0.82) 72%
+    );
+
+  box-shadow:
+    0 0 0 5px rgba(217, 173, 88, 0.07),
+    0 0 0 7px rgba(217, 173, 88, 0.25),
+    0 0 35px rgba(217, 173, 88, 0.13),
+    inset 0 0 28px rgba(0, 0, 0, 0.3);
+}
+
+/* Pola emas — gunakan animasi lama 60 detik */
+.wedding-cover__frame .medallion-pattern {
+  position: absolute;
+  inset: 10px;
+  z-index: -1;
+
+  border-radius: 50%;
+  pointer-events: none;
+
+  opacity: 0.42;
+
+  animation: patternTurn 60s linear infinite;
+}
+
+/* Ornamen berlian */
+.wedding-cover__diamond {
+  position: absolute;
+  z-index: 2;
+
+  display: block;
+
+  color: var(--wc-gold-light);
+  font-size: 13px;
+  line-height: 1;
+
+  text-shadow:
+    0 0 7px rgba(247, 231, 181, 0.7),
+    0 0 16px rgba(217, 173, 88, 0.4);
+}
+
+.wedding-cover__diamond--top {
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wedding-cover__diamond--bottom {
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wedding-cover__diamond--left {
+  top: 50%;
+  left: -7px;
+  transform: translateY(-50%);
+}
+
+.wedding-cover__diamond--right {
+  top: 50%;
+  right: -7px;
+  transform: translateY(-50%);
+}
+
+/* Nama pengantin */
+.wedding-cover__names {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 2px;
+
+  color: var(--wc-gold-light);
+  font-family: "Great Vibes", "Brush Script MT", cursive;
+  font-weight: 400;
+  line-height: 1.05;
+
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(217, 173, 88, 0.12);
+}
+
+.wedding-cover__first-line {
+  font-size: clamp(37px, 9vw, 48px);
+}
+
+.wedding-cover__second-line {
+  margin-top: 2px;
+  font-size: clamp(43px, 10vw, 55px);
+}
+
+/* Ornamen kaligrafi */
+.wedding-cover__flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 112px;
+  height: 27px;
+  margin: 7px 0 9px;
+}
+
+.wedding-cover__flourish img {
+  display: block;
+
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(79%)
+    sepia(36%)
+    saturate(573%)
+    hue-rotate(358deg)
+    brightness(96%);
+}
+
+/* Informasi penerima */
+.wedding-cover__recipient-label {
+  margin: 0 0 6px;
+
+  color: rgba(255, 243, 212, 0.82);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.wedding-cover__recipient {
+  max-width: 100%;
+  margin: 0;
+
+  color: var(--wc-gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(12px, 3.2vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Tombol buka undangan */
+.wedding-cover__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 38px;
+  margin-top: 13px;
+  padding: 9px 18px;
+
+  border: 1px solid var(--wc-gold);
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(75, 16, 23, 0.96),
+    rgba(23, 3, 6, 0.96)
+  );
+
+  color: var(--wc-gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(217, 173, 88, 0.1),
+    inset 0 0 10px rgba(217, 173, 88, 0.04);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.wedding-cover__button span[aria-hidden="true"] {
+  color: var(--wc-gold);
+  font-size: 10px;
+}
+
+.wedding-cover__button:hover {
+  color: var(--wc-burgundy-dark);
+  background: linear-gradient(
+    135deg,
+    var(--wc-gold-light),
+    var(--wc-gold)
+  );
+
+  box-shadow: 0 0 22px rgba(217, 173, 88, 0.28);
+  transform: translateY(-2px);
+}
+
+.wedding-cover__button:focus-visible {
+  outline: 2px solid var(--wc-gold-light);
+  outline-offset: 4px;
+}
+
+/* Tanggal */
+.wedding-cover__date {
+  margin: 12px 0 0;
+
+  color: var(--wc-gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  line-height: 1.5;
+}
+
+/* Footer */
+.wedding-cover__footer {
+  margin: 22px 0 0;
+
+  color: rgba(247, 231, 181, 0.75);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  line-height: 1.6;
+}
+
+/* Animasi masuk */
+@keyframes wc-background-reveal {
+  from {
+    opacity: 0.45;
+    transform: scale(1.06);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes wc-content-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsif untuk layar pendek */
+@media (max-height: 700px) {
+  .cover-page.wedding-cover {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .wedding-cover__eyebrow {
+    margin-bottom: 15px;
+  }
+
+  .wedding-cover__frame {
+    width: min(68vh, 300px, 76vw);
+    padding: 30px 20px;
+  }
+
+  .wedding-cover__footer {
+    margin-top: 14px;
+  }
+}
+
+/* Kurangi animasi jika diminta oleh pengaturan perangkat */
+@media (prefers-reduced-motion: reduce) {
+  .wedding-cover__background,
+  .wedding-cover__content {
+    animation: none;
+  }
+
+  .wedding-cover__frame .medallion-pattern {
+    animation-duration: 60s;
+  }
+}
+
+
+/* ========================================
+   COVER — SEQUENTIAL TEXT ANIMATION
+   ======================================== */
+
+/* Animasi dasar teks */
+@keyframes wc-text-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Eyebrow: The Wedding Of */
+.wedding-cover__eyebrow {
+  animation: wc-text-reveal 0.8s ease-out 0.25s both;
+}
+
+/* Nama pengantin */
+.wedding-cover__first-line {
+  display: inline-block;
+  animation: wc-text-reveal 0.9s ease-out 0.45s both;
+}
+
+.wedding-cover__second-line {
+  display: inline-block;
+  animation: wc-text-reveal 0.9s ease-out 0.65s both;
+}
+
+/* Label penerima undangan */
+.wedding-cover__recipient-label {
+  animation: wc-text-reveal 0.7s ease-out 0.9s both;
+}
+
+/* Nama tamu */
+.wedding-cover__recipient {
+  animation: wc-text-reveal 0.8s ease-out 1.05s both;
+}
+
+/* Tanggal pernikahan */
+.wedding-cover__date {
+  animation: wc-text-reveal 0.8s ease-out 1.25s both;
+}
+
+/* Hormati preferensi reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wedding-cover__eyebrow,
+  .wedding-cover__first-line,
+  .wedding-cover__second-line,
+  .wedding-cover__recipient-label,
+  .wedding-cover__recipient,
+  .wedding-cover__date {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+
+/* ========================================
+   COVER — BUTTON & FOOTER REVEAL
+   ======================================== */
+
+/* Tombol Buka Undangan muncul setelah teks */
+.cover-page.wedding-cover .wedding-cover__button {
+  animation: wc-text-reveal 0.85s ease-out 1.5s both;
+}
+
+/* Footer muncul paling akhir */
+.cover-page.wedding-cover .wedding-cover__footer {
+  animation: wc-text-reveal 0.85s ease-out 1.8s both;
+}
+
+/* Aksesibilitas: kurangi animasi jika diminta */
+@media (prefers-reduced-motion: reduce) {
+  .cover-page.wedding-cover .wedding-cover__button,
+  .cover-page.wedding-cover .wedding-cover__footer {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+

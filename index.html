@@ -38,126 +38,89 @@
   </button>
 
   <!-- COVER -->
-  <section class="cover-page" id="coverPage" aria-label="Cover undangan">
+    
+  <section
+    class="cover-page wedding-cover"
+    id="coverPage"
+    aria-label="Cover undangan"
+  >
+    <div class="wedding-cover__background" aria-hidden="true"></div>
+    <div class="wedding-cover__shade" aria-hidden="true"></div>
 
-    <!-- Animasi dua burung pada cover undangan -->
-    <div class="wedding-birds" aria-hidden="true">
+    <div class="wedding-cover__content">
+      <p class="wedding-cover__eyebrow">
+        The Wedding Of
+      </p>
 
-      <!-- Burung pertama -->
-      <span class="flying-bird flying-bird--one">
-        <svg viewBox="0 0 80 50" fill="none">
-          <g class="bird-wings">
-            <path
-              class="bird-wing bird-wing--left"
-              d="M39 27 Q23 3 5 8 Q16 25 39 30Z"
-              fill="#f4d58a"
-            />
-            <path
-              class="bird-wing bird-wing--right"
-              d="M39 27 Q53 5 74 10 Q61 27 39 30Z"
-              fill="#d9a63d"
-            />
-          </g>
-          <path
-            d="M31 27 Q39 31 49 24 Q44 34 34 34Z"
-            fill="#f4d58a"
-          />
-        </svg>
-      </span>
+      <div class="wedding-cover__frame">
+        <div class="medallion-pattern" aria-hidden="true"></div>
 
-      <!-- Burung kedua -->
-      <span class="flying-bird flying-bird--two">
-        <svg viewBox="0 0 80 50" fill="none">
-          <g class="bird-wings">
-            <path
-              class="bird-wing bird-wing--left"
-              d="M39 27 Q23 3 5 8 Q16 25 39 30Z"
-              fill="#f4d58a"
-            />
-            <path
-              class="bird-wing bird-wing--right"
-              d="M39 27 Q53 5 74 10 Q61 27 39 30Z"
-              fill="#d9a63d"
-            />
-          </g>
-          <path
-            d="M31 27 Q39 31 49 24 Q44 34 34 34Z"
-            fill="#f4d58a"
-          />
-        </svg>
-      </span>
+        <!-- Ornamen bingkai -->
+        <span
+          class="wedding-cover__diamond wedding-cover__diamond--top"
+          aria-hidden="true"
+        >◆</span>
 
+        <span
+          class="wedding-cover__diamond wedding-cover__diamond--left"
+          aria-hidden="true"
+        >◆</span>
+
+        <span
+          class="wedding-cover__diamond wedding-cover__diamond--right"
+          aria-hidden="true"
+        >◆</span>
+
+        <span
+          class="wedding-cover__diamond wedding-cover__diamond--bottom"
+          aria-hidden="true"
+        >◆</span>
+
+        <!-- Nama pengantin -->
+        <div class="wedding-cover__names">
+          <span class="wedding-cover__first-line">Pebrin &amp;</span>
+          <span class="wedding-cover__second-line">Hanna</span>
+        </div>
+
+        <!-- Ornamen kaligrafi -->
+        <div class="wedding-cover__flourish" aria-hidden="true">
+          <img
+            src="assets/heart-flourish.svg"
+            alt=""
+            class="heart-flourish-svg"
+          >
+        </div>
+
+        <!-- Penerima undangan -->
+        <p class="wedding-cover__recipient-label">
+          Kepada Yth. Bapak/Ibu/Saudara/i
+        </p>
+
+        <p class="wedding-cover__recipient" id="namaTamu">
+          Tamu Undangan
+        </p>
+
+        <!-- Tombol yang terhubung dengan JavaScript lama -->
+        <button
+          class="wedding-cover__button"
+          id="openBtn"
+          type="button"
+        >
+          <span aria-hidden="true">✦</span>
+          <span>Buka Undangan</span>
+          <span aria-hidden="true">✦</span>
+        </button>
+
+        <!-- Tanggal pernikahan -->
+        <p class="wedding-cover__date">
+          05.12.2026
+        </p>
+      </div>
+
+      <p class="wedding-cover__footer">
+        PEBRIN &amp; HANNA
+      </p>
     </div>
-
-
-    <main class="cover-center">
-
-      <header class="cover-header">
-        <p class="eyebrow">The Wedding Of</p>
-        <!-- <div class="header-divider" aria-hidden="true">
-          <span class="diamond"></span>
-        </div> -->
-      </header>
-
-      <div class="name-medallion" aria-hidden="true">
-        <div class="medallion-glow"></div>
-
-        <!-- Cincin luar -->
-        <div class="medallion-ring ring-outer"></div>
-
-        <!-- Cincin bermotif geometris -->
-        <div class="medallion-pattern"></div>
-
-        <!-- Cincin detail -->
-        <div class="medallion-ring ring-inner"></div>
-
-        <!-- Pusat medali -->
-        <div class="medallion-core"></div>
-
-        <!-- Empat ornamen utama -->
-        <span class="medallion-ornament ornament-top">✥</span>
-        <span class="medallion-ornament ornament-bottom">✥</span>
-        <span class="medallion-ornament ornament-left">❖</span>
-        <span class="medallion-ornament ornament-right">❖</span>
-
-        <!-- Kilau emas -->
-        <span class="medallion-shine shine-one"></span>
-        <span class="medallion-shine shine-two"></span>
-        </div>
-
-
-      <div class="couple-names">
-        <p class="name">Pebrin</p>
-        <span class="ampersand">&amp;</span>
-        <p class="name">Hanna</p>
-      </div>
-
-      <div class="guest-box">
-        <p class="guest-label">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-        <p class="guest-name" id="namaTamu">Tamu Undangan</p>
-      </div>
-
-      <button
-        class="btn-open"
-        id="openBtn"
-        type="button"
-      >
-        ✦ Buka Undangan ✦
-      </button>
-
-      <div>
-        <p class="wedding-date">05.12.2026</p>
-        <div class="date-divider" aria-hidden="true">
-          <span class="diamond"></span>
-        </div>
-      </div>
-
-    </main>
-
-    <footer class="cover-footer">
-      PEBRIN &amp; HANNA
-    </footer>
-
   </section>
 
   <!-- HALAMAN ISI SEMENTARA -->
