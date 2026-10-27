@@ -564,6 +564,153 @@ function inisialisasiGalleryPingPong() {
 }
 
 
+function inisialisasiGalleryLightbox() {
+  const gallery = document.querySelector(".gallery-section");
+  const lightbox = document.getElementById("galleryLightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const counter = document.getElementById("lightboxCounter");
+  const closeButton = document.getElementById("lightboxClose");
+  const prevButton = document.getElementById("lightboxPrev");
+  const nextButton = document.getElementById("lightboxNext");
+
+  if (
+    !gallery ||
+    !lightbox ||
+    !lightboxImage ||
+    !counter ||
+    !closeButton ||
+    !prevButton ||
+    !nextButton
+  ) return;
+
+  // Pindahkan lightbox langsung ke body agar fullscreen
+  if (lightbox.parentElement !== document.body) {
+    document.body.appendChild(lightbox);
+  }
+
+  // Hindari pemasangan event berulang
+  if (lightbox.dataset.initialized === "true") return;
+  lightbox.dataset.initialized = "true";
+
+  const photoButtons = Array.from(
+    gallery.querySelectorAll(".gallery-item[data-gallery-index]")
+  );
+
+  const photos = photoButtons
+    .map((button) => {
+      const img = button.querySelector("img");
+
+      return img
+        ? { src: img.currentSrc || img.src, alt: img.alt }
+        : null;
+    })
+    .filter(Boolean);
+
+  if (!photos.length) return;
+
+  let currentIndex = 0;
+  let previousFocus = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let previousOverflow = "";
+
+  function showPhoto(index) {
+    currentIndex = (index + photos.length) % photos.length;
+
+    lightboxImage.src = photos[currentIndex].src;
+    lightboxImage.alt = photos[currentIndex].alt;
+    counter.textContent = `${currentIndex + 1} / ${photos.length}`;
+
+    prevButton.disabled = photos.length < 2;
+    nextButton.disabled = photos.length < 2;
+  }
+
+  function openLightbox(index) {
+    previousFocus = document.activeElement;
+    previousOverflow = document.body.style.overflow;
+
+    showPhoto(index);
+
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    closeButton.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = previousOverflow;
+    lightboxImage.removeAttribute("src");
+
+    if (previousFocus && typeof previousFocus.focus === "function") {
+      previousFocus.focus();
+    }
+  }
+
+  function showNext() {
+    showPhoto(currentIndex + 1);
+  }
+
+  function showPrevious() {
+    showPhoto(currentIndex - 1);
+  }
+
+  photoButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.galleryIndex);
+
+      if (Number.isInteger(index) && index >= 0 && index < photos.length) {
+        openLightbox(index);
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  nextButton.addEventListener("click", showNext);
+  prevButton.addEventListener("click", showPrevious);
+
+  // Tutup jika area gelap di luar foto diklik
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Navigasi keyboard
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowRight") showNext();
+    if (event.key === "ArrowLeft") showPrevious();
+  });
+
+  // Swipe pada layar sentuh
+  lightbox.addEventListener("touchstart", (event) => {
+    if (!lightbox.classList.contains("is-open")) return;
+
+    touchStartX = event.changedTouches[0].clientX;
+    touchStartY = event.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener("touchend", (event) => {
+    if (!lightbox.classList.contains("is-open")) return;
+
+    const deltaX = event.changedTouches[0].clientX - touchStartX;
+    const deltaY = event.changedTouches[0].clientY - touchStartY;
+
+    // Hanya anggap sebagai swipe jika gerakan dominan horizontal
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) showNext();
+      else showPrevious();
+    }
+  }, { passive: true });
+}
+
+
 // =========================================================
 // 7. SISTEM RSVP & WISHES (INTEGRASI GOOGLE SHEETS)
 // =========================================================
@@ -871,14 +1018,9 @@ function inisialisasiSemuaKomponen() {
   const groomCarousels = Array.from(document.querySelectorAll(".groom-carousel"));
   const brideCarousels = Array.from(document.querySelectorAll(".bride-carousel"));
 
-  // 1. Pecah teks menjadi elemen kata-demi-kata
   inisialisasiSequentialText();
-  
-  // 2. Jalankan observer scroll reveal
-  // inisialisasiReveal();
-  
-  // 3. Jalankan fitur galeri dan RSVP
   inisialisasiGalleryPingPong();
+  inisialisasiGalleryLightbox();
   inisialisasiRSVP();
 
   // 4. Jalankan slider foto

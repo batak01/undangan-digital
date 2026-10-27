@@ -695,24 +695,94 @@ button {
 /* =========================================
    MAIN CONTENT CONTAINER & LAYOUT UTAMA
    ========================================= */
+
 .main-content {
   position: relative;
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
   min-height: 100svh;
-  margin: 0 auto !important; /* Paksa di tengah */
+  margin: 0 auto !important;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  /* Royal Batak Elegance */
   background:
-    radial-gradient(circle at top, rgba(116, 115, 110, 0.16), transparent 32%),
-    linear-gradient(180deg, #e7e3de 0%, #e5e0db 100%);
-  color: #2f2a28;
+    radial-gradient(
+      ellipse at 50% 12%,
+      rgba(116, 24, 29, 0.42) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse at 0% 55%,
+      rgba(195, 145, 62, 0.09) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 100% 82%,
+      rgba(195, 145, 62, 0.07) 0%,
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      #210304 0%,
+      #3b080a 48%,
+      #210304 100%
+    );
+
+  background-size:
+    140% 140%,
+    140% 140%,
+    140% 140%,
+    100% 100%;
+
+  background-position:
+    50% 0%,
+    0% 50%,
+    100% 50%,
+    50% 50%;
+
+  animation: royalMaroonFlow 18s ease-in-out infinite alternate;
+
+  color: #fff4d8;
   overflow-x: hidden;
   box-sizing: border-box;
+}
+
+
+@keyframes royalMaroonFlow {
+  0% {
+    background-position:
+      50% 0%,
+      0% 50%,
+      100% 50%,
+      50% 50%;
+  }
+
+  50% {
+    background-position:
+      50% 35%,
+      35% 55%,
+      75% 45%,
+      50% 50%;
+  }
+
+  100% {
+    background-position:
+      50% 70%,
+      65% 45%,
+      35% 60%,
+      50% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-content {
+    animation: none;
+  }
 }
 
 /* Container pembungkus di dalam main content */
@@ -1045,6 +1115,7 @@ button {
 }
 
 /* Card */
+
 .sacred-quote-card {
   position: relative;
   display: flex;
@@ -1053,17 +1124,26 @@ button {
   justify-content: center;
   padding: 36px 28px;
 
-  background: rgba(255, 248, 235, 0.95);
-  border: 1px solid rgba(195, 145, 62, 0.45);
+  /* Cream & Gold */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 250, 240, 0.98) 0%,
+    rgba(255, 248, 235, 0.96) 55%,
+    rgba(250, 239, 218, 0.96) 100%
+  );
+
+  border: 1px solid rgba(195, 145, 62, 0.62);
   border-radius: 22px;
 
+  /* Soft royal shadow */
   box-shadow:
-    0 16px 36px rgba(33, 3, 4, 0.3),
-    inset 0 0 20px rgba(244, 213, 138, 0.25);
+    0 18px 38px rgba(20, 2, 3, 0.28),
+    0 4px 12px rgba(59, 8, 10, 0.12),
+    inset 0 0 22px rgba(244, 213, 138, 0.20);
 
   text-align: center;
 
-  /* Reveal awal card */
+  /* Pertahankan reveal yang sudah ada */
   opacity: 0;
   transform: translateY(35px);
   filter: blur(4px);
@@ -1073,6 +1153,7 @@ button {
     transform 1s cubic-bezier(0.22, 1, 0.36, 1),
     filter 1s ease;
 }
+
 
 /* Card muncul mengikuti status section */
 .main-content.content-opened
@@ -1126,9 +1207,8 @@ button {
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #6c451b;
-
-  padding-top: 12px;
+  color: #5A1013;
+  padding-top: 14px;
   opacity: 0;
   transform: translateY(10px);
 
@@ -1150,13 +1230,17 @@ button {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
-
-  width: 44px;
+  width: 48px;
   height: 1px;
-
-  background:
-    linear-gradient(90deg, transparent, #c3913e, transparent);
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #C3913E,
+    #F4D58A,
+    #C3913E,
+    transparent
+  );
 }
 
 /* Tahan reveal awal sampai countdown selesai */
@@ -1177,18 +1261,31 @@ button {
    GROOM SECTION - CARD STYLE MATCHING IMAGE
    ========================================== */
 /* Main Section Wrapper */
+
 .groom-section {
   position: relative;
   width: 100%;
-  max-width: 480px; /* Ukuran kartu yang pas di mobile & desktop */
+  max-width: 480px;
   margin: 32px auto;
   padding: 2.5rem 1.5rem;
   box-sizing: border-box;
-  background-color: #f2efe9; /* Warna latar belakang kartu krem lembut */
+
+  /* Royal Cream */
+  background: linear-gradient(
+    145deg,
+    #fffaf0 0%,
+    #f7f0e5 55%,
+    #f2e9d9 100%
+  );
+
   border-radius: 24px;
-  border: 1px solid rgba(195, 145, 62, 0.35); /* Border emas tipis mewah */
-  box-shadow: 0 16px 36px rgba(33, 3, 4, 0.15), 
-              inset 0 0 15px rgba(244, 213, 138, 0.15); /* Efek kedalaman & kilau emas */
+  border: 1px solid rgba(195, 145, 62, 0.55);
+
+  /* Layered luxury shadow */
+  box-shadow:
+    0 18px 40px rgba(20, 2, 3, 0.24),
+    0 4px 12px rgba(59, 8, 10, 0.10),
+    inset 0 0 18px rgba(244, 213, 138, 0.18);
 }
 
 .groom-section .groom-bride {
@@ -1198,18 +1295,27 @@ button {
   padding: 0 0 1rem;
   box-sizing: border-box;
 
-  font-family: 'Playfair Display',
-               'Cormorant Garamond',
-               Georgia,
-               serif;
+  font-family:
+    'Playfair Display',
+    'Cormorant Garamond',
+    Georgia,
+    serif;
 
-  font-size: clamp(1.35rem, 5vw, 1.65rem);
+  font-size: clamp(1.4rem, 5vw, 1.7rem);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.015em;
   text-align: center;
 
   color: #3b080a;
+
+  /* Pertahankan reveal heading */
+  opacity: 0;
+  transform: translateY(12px);
+
+  transition:
+    opacity 0.7s ease 0.05s,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
 }
 
 /* Ornamen garis emas */
@@ -1217,18 +1323,21 @@ button {
   content: "";
   display: block;
 
-  width: 64px;
-  height: 1px;
-
-  margin: 0.75rem auto 0;
+  width: 76px;
+  height: 2px;
+  margin: 0.8rem auto 0;
 
   background: linear-gradient(
     90deg,
-    transparent,
-    #c5a46d 25%,
-    #c5a46d 75%,
-    transparent
+    transparent 0%,
+    #c3913e 20%,
+    #f4d58a 50%,
+    #c3913e 80%,
+    transparent 100%
   );
+
+  border-radius: 999px;
+  opacity: 0.9;
 }
 
 /* Heading reveal */
@@ -1302,6 +1411,7 @@ button {
 }
 
 /* Foto Groom: mengisi kolom utama */
+
 .groom-carousel {
   grid-column: 1;
   grid-row: 1;
@@ -1313,8 +1423,14 @@ button {
 
   border-radius: 20px;
   overflow: hidden;
-  border: 1.5px solid #e2ded4;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+  /* Royal gold frame */
+  border: 1.5px solid rgba(195, 145, 62, 0.72);
+
+  /* Soft maroon depth */
+  box-shadow:
+    0 8px 20px rgba(33, 3, 4, 0.12),
+    0 2px 6px rgba(195, 145, 62, 0.08);
 }
 
 /* Individual Slides (Untuk Slider Ping-Pong) */
@@ -1368,14 +1484,18 @@ button {
 }
 
 /* ==========================================
-   GROOM SECTION - STAGGERED REVEAL SEQUENCE
+   GROOM SECTION - CINEMATIC STAGGERED REVEAL
    ========================================== */
-/* 1. Base Container Section */
+
+/* 1. Container: gerakan masuk dibuat lebih jelas */
 .groom-section.reveal-section[data-direction="bottom"] {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(55px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+
   will-change: opacity, transform;
 }
 
@@ -1384,36 +1504,57 @@ button {
   transform: translateY(0);
 }
 
-/* 2. Step 1: Foto Showcase & Frame Carousel */
+/* 2. Heading The Groom */
+.groom-section .groom-bride {
+  opacity: 0;
+  transform: translateY(22px);
+
+  transition:
+    opacity 0.8s ease 0.45s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+}
+
+.groom-section.is-visible .groom-bride {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Foto: scale dan pergerakan lebih terlihat */
 .groom-section .groom-carousel {
   opacity: 0;
-  transform: scale(0.95) translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  transform: translateY(32px) scale(0.92);
+
+  transition:
+    opacity 1s ease 1.1s,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s;
+
+  will-change: opacity, transform;
 }
 
 .groom-section.is-visible .groom-carousel {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-/* 3. Step 2: Teks Vertikal "The Groom" */
+/* 4. Label vertikal */
 .groom-section .groom-slide-label {
   opacity: 0;
-  transition: opacity 0.7s ease 0.3s;
+
+  transition: opacity 0.75s ease 1.65s;
 }
 
 .groom-section.is-visible .groom-slide-label {
   opacity: 1;
 }
 
-/* 4. Step 3: Nama Utama "Pebrin Pardede" */
+/* 5. Nama groom */
 .groom-section .groom-bio h3 {
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(22px);
+
   transition:
-  opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s,
-  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+    opacity 0.8s ease 2s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2s;
 }
 
 .groom-section.is-visible .groom-bio h3 {
@@ -1421,12 +1562,14 @@ button {
   transform: translateY(0);
 }
 
-/* 5. Step 4: Deskripsi Silsilah Keluarga (Putra Ketiga...) */
+/* 6. Deskripsi keluarga */
 .groom-section .groom-bio p {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+  transform: translateY(22px);
+
+  transition:
+    opacity 0.8s ease 2.65s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.65s;
 }
 
 .groom-section.is-visible .groom-bio p {
@@ -1434,15 +1577,18 @@ button {
   transform: translateY(0);
 }
 
-/* Accessibility Support */
+/* 7. Aksesibilitas */
 @media (prefers-reduced-motion: reduce) {
+  .groom-section.reveal-section[data-direction="bottom"],
+  .groom-section .groom-bride,
   .groom-section .groom-carousel,
   .groom-section .groom-slide-label,
   .groom-section .groom-bio h3,
   .groom-section .groom-bio p {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
   }
 }
 /* ==========================================
@@ -1460,11 +1606,22 @@ button {
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
   box-sizing: border-box;
-  background-color: #f2efe9; /* Warna latar belakang kartu krem lembut */
-  border-radius: 24px;
-  border: 1px solid rgba(195, 145, 62, 0.35); /* Border emas tipis mewah */
-  box-shadow: 0 16px 36px rgba(33, 3, 4, 0.15), 
-              inset 0 0 15px rgba(244, 213, 138, 0.15); /* Efek kedalaman & kilau emas tipis */
+
+  border-radius: 24px; /* INI YANG KURANG */
+
+  background: linear-gradient(
+    145deg,
+    #fffaf0 0%,
+    #f7f0e5 55%,
+    #f2e9d9 100%
+  );
+
+  border: 1px solid rgba(195, 145, 62, 0.55);
+
+  box-shadow:
+    0 18px 40px rgba(20, 2, 3, 0.24),
+    0 4px 12px rgba(59, 8, 10, 0.10),
+    inset 0 0 18px rgba(244, 213, 138, 0.18);
 }
 
 /* Teks penghubung "and" di atas card */
@@ -1502,9 +1659,13 @@ button {
   aspect-ratio: 1 / 1;
 
   border-radius: 20px;
+  border: 1.5px solid #c3913e; /* GANTI KE EMAS */
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(244, 213, 138, 0.18);
+
   overflow: hidden;
-  border: 1.5px solid #e2ded4;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   background-color: var(--maroon-dark);
 }
 
@@ -1562,97 +1723,124 @@ button {
 }
 
 .bride-bio h3 {
-  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display',
+               'Cormorant Garamond',
+               serif;
   font-size: 1.85rem;
   font-weight: 600;
   font-style: italic;
   color: #1a1a1a;
-  margin: 0 0 0.75rem 0;
   letter-spacing: 0.01em;
 }
 
 .bride-bio p {
-  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Playfair Display',
+               'Cormorant Garamond',
+               Georgia,
+               serif;
   font-size: 0.95rem;
   font-style: italic;
   line-height: 1.6;
   color: #333333;
-  margin: 0;
 }
 
 /* ==========================================
-   BRIDE SECTION - STAGGERED REVEAL ANIMATIONS
+   BRIDE SECTION - CINEMATIC STAGGERED REVEAL
    ========================================== */
+
+/* 1. Container Bride */
 .bride-section.reveal-section[data-direction="bottom"] {
   opacity: 0;
-  transform: translateY(40px);
-  filter: blur(5px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s ease;
-  will-change: opacity, transform, filter;
+  transform: translateY(55px);
+  filter: none;
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: opacity, transform;
 }
 
 .bride-section.reveal-section.is-visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
+  filter: none;
 }
 
-/* Staggered entrance anak-anak elemen di dalam bride section */
+/* 2. Teks penghubung "and" */
 .bride-section .bride-and {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+  transform: translateY(22px);
+
+  transition:
+    opacity 0.8s ease 0.45s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
 }
+
 .bride-section.is-visible .bride-and {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* 3. Foto Bride */
 .bride-section .bride-carousel {
   opacity: 0;
-  transform: scale(0.95) translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-.bride-section.is-visible .bride-carousel {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: translateY(32px) scale(0.92);
+
+  transition:
+    opacity 1s ease 1.1s,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s;
+
+  will-change: opacity, transform;
 }
 
+.bride-section.is-visible .bride-carousel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 4. Label vertikal */
 .bride-section .bride-slide-label {
   opacity: 0;
-  transition: opacity 0.7s ease 0.35s;
+
+  transition: opacity 0.75s ease 1.65s;
 }
+
 .bride-section.is-visible .bride-slide-label {
   opacity: 1;
 }
 
+/* 5. Nama Bride */
 .bride-section .bride-bio h3 {
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(22px);
+
   transition:
-  opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s,
-  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+    opacity 0.8s ease 2s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2s;
 }
+
 .bride-section.is-visible .bride-bio h3 {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* 6. Deskripsi keluarga */
 .bride-section .bride-bio p {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+  transform: translateY(22px);
+
+  transition:
+    opacity 0.8s ease 2.65s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.65s;
 }
+
 .bride-section.is-visible .bride-bio p {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Accessibility Support */
+/* 7. Aksesibilitas */
 @media (prefers-reduced-motion: reduce) {
   .bride-section.reveal-section[data-direction="bottom"],
   .bride-section .bride-and,
@@ -1660,10 +1848,11 @@ button {
   .bride-section .bride-slide-label,
   .bride-section .bride-bio h3,
   .bride-section .bride-bio p {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+    will-change: auto;
   }
 }
 /* ==========================================
@@ -1676,46 +1865,61 @@ button {
 .wedding-day {
   position: relative;
   width: 100%;
-  max-width: 480px; /* Lebar card konsistent */
+  max-width: 480px;
   margin: 32px auto;
-  padding: 2.5rem 1.5rem; /* Padding internal card mewah */
+  padding: 2.5rem 1.5rem;
   box-sizing: border-box;
-  background-color: #f2efe9; /* Warna latar belakang kartu krem lembut */
+
+  background: linear-gradient(
+    145deg,
+    #fffaf0 0%,
+    #f7f0e5 55%,
+    #f2e9d9 100%
+  );
+
   border-radius: 24px;
-  border: 1px solid rgba(195, 145, 62, 0.35); /* Border emas tipis mewah */
-  box-shadow: 0 16px 36px rgba(33, 3, 4, 0.15), 
-              inset 0 0 15px rgba(244, 213, 138, 0.15); /* Efek kedalaman & kilau emas */
+  border: 1px solid rgba(195, 145, 62, 0.55);
+
+  box-shadow:
+    0 18px 40px rgba(20, 2, 3, 0.24),
+    0 4px 12px rgba(59, 8, 10, 0.10),
+    inset 0 0 18px rgba(244, 213, 138, 0.18);
 }
 
 /* --- Section Heading (Judul di dalam Card) --- */
 .wedding-day .section-heading {
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: 30px;
 }
 
+/* Eyebrow di atas judul */
 .wedding-day .section-heading .eyebrow-verse {
   font-family: Arial, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #8c7b6d;
-  margin-bottom: 6px;
+  font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.22em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: #9a7b49;
+  margin-bottom: 10px;
 }
 
+/* Judul utama */
 .wedding-day .section-heading h2 {
-  font-family: 'Playfair Display',
-               'Cormorant Garamond',
-               Georgia,
-               serif;
+  font-family:
+    'Playfair Display',
+    'Cormorant Garamond',
+    Georgia,
+    serif;
 
-  font-size: clamp(1.7rem, 4.8vw, 2rem);
+  font-size: clamp(1.8rem, 5vw, 2.1rem);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #210304;
 
-  color: var(--maroon-dark, #210304);
-
-  line-height: 1.2;
+  margin: 0;
+  letter-spacing: 0.01em;
 }
 
 /* --- Event Grid (Tata Letak 3 Kartu Acara) --- */
@@ -1732,42 +1936,86 @@ button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 22px 20px 22px 26px;
-  background-color: #fcfbfa; /* Sedikit lebih terang agar kontras dengan card utama */
-  border-radius: 16px;
-  border: 1px solid rgba(195, 145, 62, 0.2);
-  box-shadow: 0 4px 16px rgba(33, 3, 4, 0.04);
+
+  padding: 24px 20px 24px 28px;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    145deg,
+    #fffdf9 0%,
+    #fcf8f0 100%
+  );
+
+  border-radius: 18px;
+  border: 1px solid rgba(195, 145, 62, 0.35);
+
+  box-shadow:
+    0 6px 18px rgba(33, 3, 4, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .event-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(33, 3, 4, 0.08);
+  transform: translateY(-3px);
+
+  border-color: rgba(195, 145, 62, 0.6);
+
+  box-shadow:
+    0 10px 24px rgba(33, 3, 4, 0.09),
+    0 2px 8px rgba(195, 145, 62, 0.08);
 }
 
 /* Aksen Garis Emas di Sisi Kiri Sub-kartu */
+
 .event-card::before {
   content: "";
   position: absolute;
-  top: 18px;
-  bottom: 18px;
+
+  top: 20px;
+  bottom: 20px;
   left: 10px;
   width: 3px;
-  background: linear-gradient(180deg, #c3913e 0%, #f4d58a 50%, #c3913e 100%);
+
+  background: linear-gradient(
+    180deg,
+    #c3913e 0%,
+    #f4d58a 48%,
+    #c3913e 100%
+  );
+
   border-radius: 4px;
 }
 
 /* --- Highlight Card (Sub-kartu Tengah / Resepsi Warna Maroon) --- */
 .event-card.highlight-card {
-  background: linear-gradient(150deg, #4b0b0d 0%, #3b080a 52%, #210304 100%);
+  background: linear-gradient(
+    150deg,
+    #4b0b0d 0%,
+    #3b080a 52%,
+    #210304 100%
+  );
+
   color: #fff4d8;
-  border: 1px solid rgba(244, 213, 138, 0.35);
-  box-shadow: 0 10px 28px rgba(33, 3, 4, 0.2);
+  border: 1px solid rgba(244, 213, 138, 0.45);
+
+  box-shadow:
+    0 10px 28px rgba(33, 3, 4, 0.20),
+    inset 0 1px 0 rgba(244, 213, 138, 0.08);
 }
 
 .event-card.highlight-card::before {
-  background: linear-gradient(180deg, #f4d58a 0%, #c3913e 50%, #f4d58a 100%);
+  background: linear-gradient(
+    180deg,
+    #f4d58a 0%,
+    #c3913e 50%,
+    #f4d58a 100%
+  );
 }
 
 /* --- Event Tag (Pill Badge di Atas Kartu) --- */
@@ -1807,7 +2055,34 @@ button {
 }
 
 .event-card.highlight-card h3 {
-  color: var(--gold-light, #ffedb6);
+  font-family:
+    'Playfair Display',
+    Georgia,
+    serif;
+
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.4;
+
+  color: #ffedb6;
+  margin: 0 0 8px;
+}
+
+/* Tanggal dan judul lokasi pada kartu terang */
+.event-card:not(.highlight-card) h3 {
+  font-family:
+    'Playfair Display',
+    Georgia,
+    serif;
+
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4;
+
+  color: #3b080a;
+  margin: 0 0 8px;
 }
 
 .event-time {
@@ -1820,75 +2095,86 @@ button {
 }
 
 .event-card.highlight-card .event-time {
-  color: rgba(255, 244, 216, 0.85);
+  color: #ffedb6;
 }
 
 .event-place {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.88rem;
-  line-height: 1.5;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
   color: #4a4542;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 .event-card.highlight-card .event-place {
-  color: rgba(255, 244, 216, 0.9);
+  color: #fff4d8;
 }
 
-/* =========================================================
-   ANIMASI STAGGERED REVEAL (WEDDING DAY)
-   ========================================================= */
+/* ==========================================
+   WEDDING DAY - CINEMATIC STAGGERED REVEAL
+   ========================================== */
+
+/* 1. Container utama */
 .wedding-day.reveal-section[data-direction="bottom"] {
   opacity: 0;
-  transform: translateY(40px);
-  filter: blur(5px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s ease;
-  will-change: opacity, transform, filter;
+  transform: translateY(50px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: opacity, transform;
 }
 
 .wedding-day.reveal-section.is-visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
 }
 
-/* Masing-masing sub-kartu muncul berurutan (Staggered Delay) */
+/* 2. Kondisi awal setiap kartu */
 .wedding-day .event-grid .event-card {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px) scale(0.98);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: opacity, transform;
 }
 
+/* 3. Kartu pertama - Pemberkatan */
 .wedding-day.is-visible .event-grid .event-card:nth-child(1) {
   opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.15s;
-}
-
-.wedding-day.is-visible .event-grid .event-card:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.3s;
-}
-
-.wedding-day.is-visible .event-grid .event-card:nth-child(3) {
-  opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   transition-delay: 0.45s;
 }
 
-/* Prefers Reduced Motion */
+/* 4. Kartu kedua - Resepsi */
+.wedding-day.is-visible .event-grid .event-card:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 1.05s;
+}
+
+/* 5. Kartu ketiga - Alamat */
+.wedding-day.is-visible .event-grid .event-card:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 1.65s;
+}
+
+/* 6. Aksesibilitas */
 @media (prefers-reduced-motion: reduce) {
   .wedding-day.reveal-section[data-direction="bottom"],
   .wedding-day .event-grid .event-card {
     opacity: 1 !important;
     transform: none !important;
-    filter: none !important;
     transition: none !important;
+    will-change: auto;
   }
 }
 /* =========================================================
@@ -1901,46 +2187,58 @@ button {
 .story-section {
   position: relative;
   width: 100%;
-  max-width: 480px; /* Lebar card konsisten seperti groom & bride */
+  max-width: 480px;
   margin: 32px auto;
-  padding: 2.5rem 1.5rem; /* Padding internal card yang pas */
+  padding: 2.5rem 1.5rem;
   box-sizing: border-box;
-  background-color: #f2efe9; /* Warna latar belakang kartu krem lembut */
+
+  background: linear-gradient(
+    145deg,
+    #fffaf0 0%,
+    #f7f0e5 55%,
+    #f2e9d9 100%
+  );
+
   border-radius: 24px;
-  border: 1px solid rgba(195, 145, 62, 0.35); /* Border emas tipis mewah */
-  box-shadow: 0 16px 36px rgba(33, 3, 4, 0.15), 
-              inset 0 0 15px rgba(244, 213, 138, 0.15); /* Efek kedalaman & kilau emas */
+  border: 1px solid rgba(195, 145, 62, 0.55);
+
+  box-shadow:
+    0 18px 40px rgba(20, 2, 3, 0.24),
+    0 4px 12px rgba(59, 8, 10, 0.10),
+    inset 0 0 18px rgba(244, 213, 138, 0.18);
 }
 
 /* --- Heading Section di dalam Card --- */
 .story-section .section-heading {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .story-section .section-heading .eyebrow-verse {
   font-family: Arial, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #8c7b6d;
-  margin-bottom: 6px;
+  font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.22em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: #9a7b49;
+  margin-bottom: 10px;
 }
 
 .story-section .section-heading h2 {
-  font-family: 'Playfair Display',
-               'Cormorant Garamond',
-               Georgia,
-               serif;
+  font-family:
+    'Playfair Display',
+    'Cormorant Garamond',
+    Georgia,
+    serif;
 
-  font-size: clamp(1.7rem, 4.8vw, 2rem);
+  font-size: clamp(1.8rem, 5vw, 2.1rem);
   font-style: italic;
-  font-weight: 400;
-
-  color: var(--maroon-dark, #210304);
-
-  line-height: 1.2;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #210304;
+  letter-spacing: 0.01em;
+  margin: 0;
 }
 
 /* --- Timeline Wrapper & Vertical Line --- */
@@ -2012,101 +2310,145 @@ button {
 /* --- Story Card (Sub-kartu di dalam timeline) --- */
 .story-card {
   flex: 1;
-  padding: 18px 20px;
-  background-color: #fcfbfa; /* Sedikit lebih terang agar kontras dengan card utama */
-  border-radius: 16px;
-  border: 1px solid rgba(195, 145, 62, 0.2);
-  box-shadow: 0 4px 16px rgba(33, 3, 4, 0.04);
+  min-width: 0;
+  padding: 20px;
   box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  background: linear-gradient(
+    145deg,
+    #fffdf9 0%,
+    #fcf8f0 100%
+  );
+
+  border-radius: 18px;
+  border: 1px solid rgba(195, 145, 62, 0.35);
+
+  box-shadow:
+    0 6px 18px rgba(33, 3, 4, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .story-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(33, 3, 4, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(195, 145, 62, 0.6);
+
+  box-shadow:
+    0 10px 24px rgba(33, 3, 4, 0.09),
+    0 2px 8px rgba(195, 145, 62, 0.08);
 }
 
-/* Tipografi di dalam Sub-kartu Cerita */
+/* Tanggal cerita */
 .story-date {
   display: inline-block;
   font-family: Arial, sans-serif;
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  color: #c3913e;
-  margin-bottom: 4px;
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+  color: #9a702f;
+  margin-bottom: 6px;
 }
 
+/* Judul cerita */
 .story-card h3 {
-  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-family:
+    'Playfair Display',
+    Georgia,
+    serif;
+
   font-size: 1.25rem;
   font-style: italic;
   font-weight: 600;
-  color: #210304;
-  margin-bottom: 8px;
-  line-height: 1.25;
+  line-height: 1.4;
+  color: #3b080a;
+  margin: 0 0 8px;
 }
 
+/* Narasi cerita */
 .story-card p {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.92rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.7;
   color: #4a4542;
   margin: 0;
 }
 
-/* =========================================================
-   ANIMASI REVEAL STAGGERED (LOVE STORY TIMELINE)
-   ========================================================= */
+/* ==========================================
+   LOVE STORY - CINEMATIC STAGGERED REVEAL
+   ========================================== */
+
+/* 1. Container utama */
 .story-section.reveal-section[data-direction="bottom"] {
   opacity: 0;
-  transform: translateY(40px);
-  filter: blur(5px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s ease;
-  will-change: opacity, transform, filter;
+  transform: translateY(50px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: opacity, transform;
 }
 
 .story-section.reveal-section.is-visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
 }
 
-/* Item Timeline muncul berurutan dari atas ke bawah */
+/* 2. Kondisi awal item timeline */
 .story-timeline .story-item {
   opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px) scale(0.98);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: opacity, transform;
 }
 
-.story-section.is-visible .story-timeline .story-item:nth-child(1) {
+/* 3. Item pertama */
+.story-section.is-visible
+.story-timeline .story-item:nth-child(1) {
   opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.15s;
-}
-
-.story-section.is-visible .story-timeline .story-item:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.3s;
-}
-
-.story-section.is-visible .story-timeline .story-item:nth-child(3) {
-  opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   transition-delay: 0.45s;
 }
 
-/* Integrasi Word-Span Animasi Teks pada Story Card */
+/* 4. Item kedua */
+.story-section.is-visible
+.story-timeline .story-item:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 1.05s;
+}
+
+/* 5. Item ketiga */
+.story-section.is-visible
+.story-timeline .story-item:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 1.65s;
+}
+
+/* 6. Animasi teks per kata */
 .story-card .word-span {
   display: inline-block !important;
   opacity: 0 !important;
   transform: translateY(8px) !important;
-  transition: opacity 0.5s ease, transform 0.5s ease !important;
-  transition-delay: calc(var(--word-index, 0) * 0.02s + 0.25s) !important;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease !important;
+
+  transition-delay:
+    calc(var(--word-index, 0) * 0.025s + 0.25s) !important;
 }
 
 .story-section.is-visible .story-card .word-span {
@@ -2114,7 +2456,7 @@ button {
   transform: translateY(0) !important;
 }
 
-/* Accessibility Support */
+/* 7. Aksesibilitas */
 @media (prefers-reduced-motion: reduce) {
   .story-section.reveal-section[data-direction="bottom"],
   .story-timeline .story-item,
@@ -2123,6 +2465,7 @@ button {
     transform: none !important;
     filter: none !important;
     transition: none !important;
+    will-change: auto;
   }
 }
 /* =========================================================
@@ -2468,8 +2811,592 @@ button {
   }
 }
 /* =========================================================
-   WEDDING GALLERY — FULL CODE (CARD CONTAINER & CINEMATIC PING-PONG)
+   END WEDDING GALLERY — FULL CODE (CARD CONTAINER & CINEMATIC PING-PONG)
    ========================================================= */
+
+/* ========================================
+   ROYAL EDITORIAL PHOTO GALLERY
+======================================== */
+
+.gallery-section .section-heading {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.gallery-section .section-heading h2 {
+  color: #ffedb6;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(244, 213, 138, 0.16);
+}
+
+.gallery-section .eyebrow-verse {
+  color: #f4d58a;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Grid utama: 1 foto besar + 8 foto pendamping */
+.gallery-section .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: clamp(100px, 24vw, 170px);
+  gap: 10px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+/* Setiap foto */
+.gallery-section .gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(244, 213, 138, 0.55);
+  border-radius: 13px;
+  background: #210304;
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 237, 182, 0.08);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-section .gallery-item--featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  border-radius: 17px;
+}
+
+.gallery-section .gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.65s cubic-bezier(0.2, 0.65, 0.3, 1),
+    filter 0.45s ease;
+}
+
+/* Ornamen gold pada foto */
+.gallery-section .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffedb6;
+  font-size: 24px;
+  opacity: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(33, 3, 4, 0.05),
+    rgba(33, 3, 4, 0.5)
+  );
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.gallery-section .gallery-item--featured .gallery-overlay {
+  font-size: 32px;
+}
+
+.gallery-section .gallery-item:hover img,
+.gallery-section .gallery-item:focus-visible img {
+  transform: scale(1.06);
+  filter: brightness(0.82);
+}
+
+.gallery-section .gallery-item:hover .gallery-overlay,
+.gallery-section .gallery-item:focus-visible .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-section .gallery-item:focus-visible {
+  outline: 2px solid #ffedb6;
+  outline-offset: 3px;
+}
+
+/* Tablet dan desktop */
+@media (min-width: 600px) {
+  .gallery-section .gallery-grid {
+    grid-auto-rows: 145px;
+    gap: 12px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 360px) {
+  .gallery-section .gallery-grid {
+    grid-auto-rows: 92px;
+    gap: 7px;
+    padding: 0 2px;
+  }
+
+  .gallery-section .gallery-item {
+    border-radius: 10px;
+  }
+
+  .gallery-section .gallery-item--featured {
+    border-radius: 13px;
+  }
+}
+
+/* Kurangi gerakan jika pengguna memilih reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-section .gallery-item img,
+  .gallery-section .gallery-overlay {
+    transition: none;
+  }
+}
+
+/* ========================================
+   ROYAL GALLERY LIGHTBOX
+======================================== */
+.gallery-lightbox {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+
+  z-index: 2147483647;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  background: rgba(10, 3, 4, 0.98);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.gallery-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-lightbox .lightbox-content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox .lightbox-content img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.gallery-lightbox .lightbox-close,
+.gallery-lightbox .lightbox-nav,
+.gallery-lightbox .lightbox-counter {
+  z-index: 5;
+}
+
+/* ========================================
+   LIGHTBOX NAVIGATION — FINAL TUNING
+======================================== */
+
+/* Tombol close lebih kecil */
+.gallery-lightbox .lightbox-close {
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Ukuran tombol navigasi lebih kecil */
+.gallery-lightbox .lightbox-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 42px;
+
+  padding: 0;
+  border-radius: 8px;
+
+  font-size: 14px;
+  line-height: 1;
+
+  transform: translateY(-50%);
+}
+
+/* Panah kiri menempel di tepi kiri */
+.gallery-lightbox .lightbox-prev {
+  left: 8px;
+  right: auto;
+}
+
+/* Panah kanan menempel di tepi kanan */
+.gallery-lightbox .lightbox-next {
+  right: 8px;
+  left: auto;
+}
+
+/* Efek klik tanpa mengubah posisi tengah vertikal */
+.gallery-lightbox .lightbox-nav:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+/* Tampilan layar yang lebih lebar */
+@media (min-width: 600px) {
+  .gallery-lightbox .lightbox-prev {
+    left: 18px;
+  }
+
+  .gallery-lightbox .lightbox-next {
+    right: 18px;
+  }
+
+  .gallery-lightbox .lightbox-nav {
+    width: 34px;
+    height: 46px;
+  }
+}
+
+.lightbox-content {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-width: 0;
+
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lightbox-content img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  opacity: 0;
+  transform: scale(0.98);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gallery-lightbox.is-open .lightbox-content img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lightbox-counter {
+  position: absolute;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 2;
+
+  color: #ffedb6;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin: 0;
+
+  transform: translateX(-50%);
+}
+
+.gallery-lightbox.is-open .lightbox-content img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lightbox-counter {
+  color: #ffedb6;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin: 14px 0 0;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(244, 213, 138, 0.55);
+  border-radius: 50%;
+  background: rgba(59, 8, 10, 0.8);
+  color: #ffedb6;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-nav {
+  flex-shrink: 0;
+  width: 42px;
+  height: 52px;
+  border: 1px solid rgba(244, 213, 138, 0.5);
+  border-radius: 22px;
+  color: #ffedb6;
+  background: rgba(59, 8, 10, 0.8);
+  font-size: 19px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lightbox-nav:hover,
+.lightbox-close:hover {
+  background: #5a1114;
+}
+
+.lightbox-nav:active {
+  transform: scale(0.94);
+}
+
+@media (max-width: 480px) {
+  .gallery-lightbox {
+    gap: 6px;
+    padding: 58px 8px 24px;
+  }
+
+  .lightbox-nav {
+    width: 32px;
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .lightbox-content img {
+    max-height: calc(100dvh - 135px);
+    border-radius: 8px;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-lightbox,
+  .lightbox-content img,
+  .lightbox-nav {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   ROYAL EDITORIAL GALLERY
+   SLOW CINEMATIC STAGGERED REVEAL
+========================================== */
+
+/* Judul: kondisi awal */
+.gallery-section .section-heading {
+  opacity: 0;
+  transform: translateY(14px);
+
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+/* Judul: kondisi setelah section terlihat */
+.gallery-section.is-visible .section-heading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Semua foto: kondisi awal */
+.gallery-section .gallery-grid .gallery-item {
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+  transition-delay: 0s;
+}
+
+/* Foto utama */
+.gallery-section.is-visible
+.gallery-grid .gallery-item--featured {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.35s;
+}
+
+/* Foto pendamping */
+.gallery-section.is-visible
+.gallery-grid .gallery-item:not(.gallery-item--featured) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.45s;
+}
+
+/* Urutan kemunculan foto */
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(3) {
+  transition-delay: 0.55s;
+}
+
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(4) {
+  transition-delay: 0.65s;
+}
+
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(5) {
+  transition-delay: 0.75s;
+}
+
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(6) {
+  transition-delay: 0.85s;
+}
+
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(7) {
+  transition-delay: 0.95s;
+}
+
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(8) {
+  transition-delay: 1.05s;
+}
+
+.gallery-section.is-visible
+.gallery-grid .gallery-item:nth-child(9) {
+  transition-delay: 1.15s;
+}
+
+/* Hover desktop: hanya gambar yang zoom */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .gallery-section .gallery-grid .gallery-item img {
+    transition: transform 0.55s cubic-bezier(0.2, 0.65, 0.3, 1);
+  }
+
+  .gallery-section .gallery-grid .gallery-item:hover img {
+    transform: scale(1.045);
+  }
+}
+
+/* Reduced motion: konten tetap terlihat */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-section .section-heading,
+  .gallery-section .gallery-grid .gallery-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  .gallery-section .gallery-grid .gallery-item img,
+  .gallery-section .gallery-overlay,
+  .gallery-section .gallery-overlay span {
+    transition: none !important;
+  }
+}
+
+/* Samakan background grid dengan container gallery */
+.gallery-section .gallery-grid {
+  background: transparent !important;
+}
+
+/* Pastikan setiap kartu foto tidak memiliki lapisan abu-abu */
+.gallery-section .gallery-item {
+  background-color: #210304;
+}
+
+/* DEBUG: paksa area gallery menyatu dengan container */
+.gallery-section,
+.gallery-section .gallery-grid {
+  background-color: #f2efe9 !important;
+  background-image: none !important;
+}
+
+.gallery-section .gallery-grid::before,
+.gallery-section .gallery-grid::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* TEST: hilangkan efek bayangan di batas foto */
+.gallery-section .gallery-item {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.gallery-section .gallery-grid {
+  gap: 10px;
+}
+
+/* ========================================
+   END ROYAL EDITORIAL PHOTO GALLERY
+======================================== */
+
 
 /* =========================================================
    STANDARISASI JARAK GLOBAL ANTAR CONTAINER SECTION
@@ -3084,7 +4011,6 @@ button {
 /* =========================================================
    SECTION: WEDDING GIFT (AMPLOP DIGITAL & KARTU ATM)
    ========================================================= */
-
 .gift-section {
   position: relative;
   width: 100%;
@@ -3487,6 +4413,12 @@ button {
     animation: none !important;
     opacity: 0;
   }
+}
+
+/* WEDDING GIFT — FORCE GOLD ACCOUNT NUMBER */
+.gift-section .real-card .card-inner .card-number-wrapper .card-number {
+  color: #ffedb6 !important;
+  -webkit-text-fill-color: #ffedb6;
 }
 /* =========================================================
    END SECTION: WEDDING GIFT (AMPLOP DIGITAL & KARTU ATM)
