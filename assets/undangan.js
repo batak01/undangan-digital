@@ -20,7 +20,6 @@ function dapatkanNamaTamu() {
   }
 }
 
-
 // =========================================================
 // 2. KONTROL COVER UNDANGAN & AUDIO MUSIK LATAR
 // =========================================================
@@ -84,8 +83,6 @@ function inisialisasiCountdownReveal() {
   );
 }
 
-
-
 function aktifkanAnimasiTeksSacredQuote() {
   const sacredQuote = document.querySelector(
     ".sacred-quote-section"
@@ -143,8 +140,6 @@ function aktifkanAnimasiTeksSacredQuote() {
     });
   });
 }
-
-
 
 // Mengubah status visual tombol musik (Play / Pause)
 function aturStatusMusik(isPlaying) {
@@ -278,7 +273,6 @@ function perbaruiCountdown() {
 
 const countdownTimer = window.setInterval(perbaruiCountdown, 1000);
 
-
 // =========================================================
 // 4. PEMISAH TEKS KATA DEMI KATA (WORD-BY-WORD ANIMATION)
 // Memecah kalimat menjadi elemen <span class="word-span">
@@ -315,45 +309,54 @@ function inisialisasiSequentialText() {
   });
 }
 
-
 // =========================================================
 // 5. ANIMASI SCROLL REVEAL (INTERSECTION OBSERVER)
 // Memicu elemen .reveal-section beranimasi saat di-scroll
 // =========================================================
+
 function inisialisasiReveal() {
   const revealSections = document.querySelectorAll(".reveal-section");
   if (!revealSections.length) return;
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
   if (prefersReducedMotion) {
-    revealSections.forEach((section) => section.classList.add("is-visible"));
+    revealSections.forEach((section) => {
+      section.classList.add("is-visible");
+    });
     return;
   }
 
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
+        const section = entry.target;
 
-        if (entry.target.matches(".sacred-quote-section")) {
-          aktifkanAnimasiTeksSacredQuote();
-        }
-      } else {
-          // TAMBAHKAN INI JIKA MAU ANIMASI BERULANG KETIKA DI-SCROLL NAIK-TURUN
-          entry.target.classList.remove("is-visible");
+        if (entry.isIntersecting) {
+          if (!section.classList.contains("is-visible")) {
+            section.classList.add("is-visible");
+
+            if (section.matches(".sacred-quote-section")) {
+              aktifkanAnimasiTeksSacredQuote();
+            }
+          }
+        } else {
+          section.classList.remove("is-visible");
         }
       });
     },
     {
-      threshold: 0.15,
-      rootMargin: "0px 0px -30px 0px"
+      threshold: 0,
+      rootMargin: "100px 0px 100px 0px"
     }
   );
 
-  revealSections.forEach((section) => revealObserver.observe(section));
+  revealSections.forEach((section) => {
+    revealObserver.observe(section);
+  });
 }
-
 
 // =========================================================
 // 6A. SLIDER FOTO UTAMA & BRIDE (FADE / OVERLAY)
@@ -401,7 +404,6 @@ function inisialisasiSlider(opsi) {
   return jalankanRotasi();
 }
 
-
 // =========================================================
 // 6B. SLIDER FOTO GROOM (GESER HORISONTAL KANAN KE KIRI)
 // =========================================================
@@ -432,7 +434,6 @@ function inisialisasiGroomSlideHorisontal(carousel, interval = 5000) {
 
   window.setInterval(nextSlide, interval);
 }
-
 
 // =========================================================
 // 6C. SLIDER FOTO BRIDE (GESER HORISONTAL KIRI KE KANAN)
@@ -484,7 +485,6 @@ function inisialisasiBrideSlideHorisontal(carousel, interval = 5000) {
   updateSlidePosition();
   startSlider();
 }
-
 
 // =========================================================
 // 6D. GALERI PING-PONG (SLIDER GALERI INTERAKTIF)
@@ -562,7 +562,6 @@ function inisialisasiGalleryPingPong() {
     };
   });
 }
-
 
 function inisialisasiGalleryLightbox() {
   const gallery = document.querySelector(".gallery-section");
@@ -709,7 +708,6 @@ function inisialisasiGalleryLightbox() {
     }
   }, { passive: true });
 }
-
 
 // =========================================================
 // 7. SISTEM RSVP & WISHES (INTEGRASI GOOGLE SHEETS)
@@ -949,7 +947,6 @@ function inisialisasiRSVP() {
       .replace(/'/g, "&#039;");
   }
 }
-
 
 // =========================================================
 // 7. END SISTEM RSVP & WISHES (INTEGRASI GOOGLE SHEETS)
