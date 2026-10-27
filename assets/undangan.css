@@ -3806,18 +3806,17 @@ button {
   font-style: italic;
 }
 
-
 /* =========================================================
    ANIMASI STAGGERED REVEAL — RSVP SECTION
    ========================================================= */
-
 .rsvp-section.reveal-section[data-direction="bottom"] {
   opacity: 0;
   transform: translateY(40px);
   filter: blur(5px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s ease;
+  transition:
+    opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.6s ease;
   will-change: opacity, transform, filter;
 }
 
@@ -3827,12 +3826,13 @@ button {
   filter: blur(0);
 }
 
-/* Staggered Delay untuk Elemen Form di Dalamnya */
+/* Heading */
 .rsvp-section .section-heading {
   opacity: 0;
   transform: translateY(15px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s,
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
 }
 
 .rsvp-section.is-visible .section-heading {
@@ -3840,11 +3840,13 @@ button {
   transform: translateY(0);
 }
 
+/* Form */
 .rsvp-section .rsvp-form {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+  transition:
+    opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s,
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
 }
 
 .rsvp-section.is-visible .rsvp-form {
@@ -3852,11 +3854,13 @@ button {
   transform: translateY(0);
 }
 
+/* Wedding Guestbook */
 .rsvp-section .wishes-container {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+  transition:
+    opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.9s,
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.9s;
 }
 
 .rsvp-section.is-visible .wishes-container {
@@ -3876,7 +3880,6 @@ button {
     transition: none !important;
   }
 }
-
 /* =========================================================
    PAGINATION WISHES (NAVIGASI HALAMAN UCAPAN)
    ========================================================= */
@@ -4224,18 +4227,21 @@ button {
   transform: scale(0.95);
 }
 
-
 /* =========================================================
-   ANIMASI STAGGERED REVEAL — GIFT SECTION
+   WEDDING GIFT — SLOW SEQUENTIAL REVEAL
    ========================================================= */
 
+/* 1. Container utama */
 .gift-section.reveal-section[data-direction="bottom"] {
   opacity: 0;
-  transform: translateY(40px);
-  filter: blur(5px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s ease;
+  transform: translateY(45px);
+  filter: blur(6px);
+
+  transition:
+    opacity 2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 2s ease;
+
   will-change: opacity, transform, filter;
 }
 
@@ -4245,33 +4251,57 @@ button {
   filter: blur(0);
 }
 
-.gift-section .section-heading {
+/* Animasi elemen di dalam section */
+.gift-section .section-heading,
+.gift-section .gift-intro,
+.gift-section .gift-action-wrapper,
+.gift-section .gift-grid {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  transform: translateY(24px);
+
+  transition:
+    opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* 2. Heading — muncul pertama */
 .gift-section.is-visible .section-heading {
   opacity: 1;
   transform: translateY(0);
+
+  transition-delay: 0.45s;
 }
 
-.gift-section .gift-grid {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s,
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+/* 3. Teks deskripsi — menyusul */
+.gift-section.is-visible .gift-intro {
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-delay: 1s;
 }
 
+/* 4. Tombol Klik Disini — menyusul setelah teks */
+.gift-section.is-visible .gift-action-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-delay: 1.55s;
+}
+
+/* 5. Gift cards — animasi reveal saat section aktif */
 .gift-section.is-visible .gift-grid {
   opacity: 1;
   transform: translateY(0);
+
+  transition-delay: 1.9s;
 }
 
+/* Aksesibilitas */
 @media (prefers-reduced-motion: reduce) {
   .gift-section.reveal-section[data-direction="bottom"],
   .gift-section .section-heading,
+  .gift-section .gift-intro,
+  .gift-section .gift-action-wrapper,
   .gift-section .gift-grid {
     opacity: 1 !important;
     transform: none !important;
@@ -4559,25 +4589,115 @@ button {
   margin: 0;
 }
 
-/* =================================================================
-   ANIMASI REVEAL AMAN (TIDAK BIKIN KOSONG)
-   ================================================================= */
+/* =========================================================
+   CLOSING SECTION — SLOW & ELEGANT REVEAL
+   ========================================================= */
 
-/* Animasi cukup diterapkan ke seluruh section agar halus & tidak berisiko hilang */
+/* Container Closing */
 .closing-section.reveal-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(45px);
+  filter: blur(5px);
+
+  transition:
+    opacity 2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 2s ease;
+
+  will-change: opacity, transform, filter;
 }
 
-/* Saat di-trigger oleh JavaScript observer kamu (mendukung .is-revealed, .is-visible, maupun .active) */
+/* Saat Closing aktif */
 .closing-section.reveal-section.is-revealed,
 .closing-section.reveal-section.is-visible,
 .closing-section.reveal-section.active {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
+
+/* Elemen di dalam Closing */
+.closing-section .closing-monogram,
+.closing-section .eyebrow-verse,
+.closing-section .closing-title,
+.closing-section .closing-text,
+.closing-section .closing-photo-frame,
+.closing-section .closing-signature {
+  opacity: 0;
+  transform: translateY(22px);
+
+  transition:
+    opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Urutan animasi */
+.closing-section.is-visible .closing-monogram,
+.closing-section.is-revealed .closing-monogram,
+.closing-section.active .closing-monogram {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+.closing-section.is-visible .eyebrow-verse,
+.closing-section.is-revealed .eyebrow-verse,
+.closing-section.active .eyebrow-verse {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.65s;
+}
+
+.closing-section.is-visible .closing-title,
+.closing-section.is-revealed .closing-title,
+.closing-section.active .closing-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.95s;
+}
+
+.closing-section.is-visible .closing-text,
+.closing-section.is-revealed .closing-text,
+.closing-section.active .closing-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.25s;
+}
+
+.closing-section.is-visible .closing-photo-frame,
+.closing-section.is-revealed .closing-photo-frame,
+.closing-section.active .closing-photo-frame {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.6s;
+}
+
+.closing-section.is-visible .closing-signature,
+.closing-section.is-revealed .closing-signature,
+.closing-section.active .closing-signature {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 2s;
+}
+
+/* Aksesibilitas */
+@media (prefers-reduced-motion: reduce) {
+  .closing-section.reveal-section,
+  .closing-section .closing-monogram,
+  .closing-section .eyebrow-verse,
+  .closing-section .closing-title,
+  .closing-section .closing-text,
+  .closing-section .closing-photo-frame,
+  .closing-section .closing-signature {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+/* ==========================================
+   CLOSING SECTION & FOOTER — PRESISI 100%
+   ========================================== */
 
 /* Footer Undangan */
 .wedding-footer {
@@ -4591,6 +4711,37 @@ button {
   color: #f4d58a;
   text-align: center;
   box-sizing: border-box;
+}
+
+
+/* =========================================================
+   WEDDING FOOTER — SLOW REVEAL
+   ========================================================= */
+
+.wedding-footer {
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Aktif ketika footer masuk ke viewport */
+.wedding-footer.is-visible,
+.wedding-footer.is-revealed,
+.wedding-footer.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Aksesibilitas */
+@media (prefers-reduced-motion: reduce) {
+  .wedding-footer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 .footer-names {

@@ -43,7 +43,6 @@ function inisialisasiCountdownReveal() {
   if (!countdownBoxes.length || !sacredQuote) return;
 
   const lastCountdownBox = countdownBoxes[countdownBoxes.length - 1];
-
   
   const finishCountdownAnimation = () => {
     countdownAnimationFinished = true;
@@ -54,7 +53,6 @@ function inisialisasiCountdownReveal() {
     // Coba aktifkan animasi kata setelah countdown selesai.
     aktifkanAnimasiTeksSacredQuote();
   };
-
 
   // Hormati pengaturan reduced motion.
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -407,7 +405,7 @@ function inisialisasiSlider(opsi) {
 // =========================================================
 // 6B. SLIDER FOTO GROOM (GESER HORISONTAL KANAN KE KIRI)
 // =========================================================
-function inisialisasiGroomSlideHorisontal(carousel, interval = 5000) {
+function inisialisasiGroomSlideHorisontal(carousel, interval = 3000) {
   const slides = Array.from(carousel.querySelectorAll(".groom-slide"));
   if (!slides.length) return;
 
@@ -438,7 +436,7 @@ function inisialisasiGroomSlideHorisontal(carousel, interval = 5000) {
 // =========================================================
 // 6C. SLIDER FOTO BRIDE (GESER HORISONTAL KIRI KE KANAN)
 // =========================================================
-function inisialisasiBrideSlideHorisontal(carousel, interval = 5000) {
+function inisialisasiBrideSlideHorisontal(carousel, interval = 3000) {
   const slides = Array.from(carousel.querySelectorAll(".bride-slide"));
   if (!slides.length) return;
 
@@ -1024,11 +1022,11 @@ function inisialisasiSemuaKomponen() {
   inisialisasiSlider({
     slides: sliderSlides,
     dots: sliderDots,
-    interval: 5000
+    interval: 3000
   });
 
-  groomCarousels.forEach((carousel) => inisialisasiGroomSlideHorisontal(carousel, 5000));
-  brideCarousels.forEach((carousel) => inisialisasiBrideSlideHorisontal(carousel, 5000));
+  groomCarousels.forEach((carousel) => inisialisasiGroomSlideHorisontal(carousel, 3000));
+  brideCarousels.forEach((carousel) => inisialisasiBrideSlideHorisontal(carousel, 3000));
 }
 
 // Menjalankan inisialisasi awal saat dokumen HTML selesai dibaca
