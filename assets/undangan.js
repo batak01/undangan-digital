@@ -10,6 +10,15 @@
 // 1. AMBIL NAMA TAMU DARI PARAMETER URL
 // Contoh URL: website.com/?to=Keluarga%20Budi
 // =========================================================
+// Memaksa browser kembali ke paling atas (0, 0) setiap kali halaman direfresh / dimuat ulang
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('beforeunload', function () {
+  window.scrollTo(0, 0);
+});
+
 function dapatkanNamaTamu() {
   const params = new URLSearchParams(window.location.search);
   const nama = params.get("to");
@@ -115,9 +124,6 @@ function aktifkanAnimasiTeksSacredQuote() {
 
   // Siapkan kondisi awal setiap kata.
   words.forEach((word) => {
-    word.style.opacity = "0";
-    word.style.transform = "translateY(12px)";
-    word.style.filter = "blur(5px)";
   });
 
   // Pastikan browser menerapkan kondisi awal.
@@ -131,9 +137,6 @@ function aktifkanAnimasiTeksSacredQuote() {
 
       // Kembalikan kontrol animasi ke CSS.
       words.forEach((word) => {
-        word.style.removeProperty("opacity");
-        word.style.removeProperty("transform");
-        word.style.removeProperty("filter");
       });
     });
   });
@@ -166,18 +169,27 @@ async function bukaUndangan() {
   coverPage.classList.add("opened");
   document.body.classList.remove("lock-scroll");
 
+  // 👉 TAMBAHAN: Paksa halaman langsung melompat mulus (smooth scroll) ke Photo Slider Utama
+  const photoSliderSection = document.getElementById("slider-utama"); // Sesuaikan ID section photo slider Anda
+  if (photoSliderSection) {
+    photoSliderSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    // Fallback jika ID tidak ketemu, scroll ke paling atas halaman
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   musicBtn.hidden = false;
   musicBtn.classList.add("visible");
 
   // Aktifkan kontainer utama untuk memicu animasi konten
  const mainContent = document.getElementById("mainContent");
 
-if (mainContent) {
-  mainContent.classList.add("content-opened");
+  if (mainContent) {
+    mainContent.classList.add("content-opened");
 
-  // Tunggu animasi countdown selesai sebelum mengizinkan quote reveal.
-  inisialisasiCountdownReveal();
-}
+    // Tunggu animasi countdown selesai sebelum mengizinkan quote reveal.
+    inisialisasiCountdownReveal();
+  }
 
   // 👉 TARO DI SINI AGAR TEKS LANGSUNG TER-SPLIT SAAT TOMBOL DIBUKA
   inisialisasiSequentialText();
@@ -1004,9 +1016,42 @@ function toggleGiftCards() {
   }
 }
 
+
 // =========================================================
-// 9. INISIALISASI UTAMA SAAT HALAMAN DIMUAT (DOM CONTENT LOADED)
+// GLOBAL IMAGE PROTECTION
 // =========================================================
+
+// Mencegah klik kanan langsung pada gambar
+document.addEventListener("contextmenu", function (event) {
+  const target = event.target instanceof Element ? event.target : null;
+  const image = target?.closest("img");
+
+  if (image) {
+    event.preventDefault();
+  }
+});
+
+// Mencegah gambar di-drag
+document.addEventListener("dragstart", function (event) {
+  const target = event.target instanceof Element ? event.target : null;
+  const image = target?.closest("img");
+
+  if (image) {
+    event.preventDefault();
+  }
+});
+
+// Menonaktifkan draggable pada semua gambar
+function proteksiSemuaGambar() {
+  document.querySelectorAll("img").forEach((image) => {
+    image.setAttribute("draggable", "false");
+  });
+}
+
+// =========================================================
+// 9. INISIALISASI UTAMA SAAT HALAMAN DIMUAT
+// =========================================================
+
 function inisialisasiSemuaKomponen() {
   const sliderSlides = Array.from(document.querySelectorAll(".slider-slide"));
   const sliderDots = Array.from(document.querySelectorAll(".slider-dot"));
@@ -1025,13 +1070,27 @@ function inisialisasiSemuaKomponen() {
     interval: 3000
   });
 
-  groomCarousels.forEach((carousel) => inisialisasiGroomSlideHorisontal(carousel, 3000));
-  brideCarousels.forEach((carousel) => inisialisasiBrideSlideHorisontal(carousel, 3000));
+  groomCarousels.forEach((carousel) =>
+    inisialisasiGroomSlideHorisontal(carousel, 3000)
+  );
+
+  brideCarousels.forEach((carousel) =>
+    inisialisasiBrideSlideHorisontal(carousel, 3000)
+  );
 }
 
-// Menjalankan inisialisasi awal saat dokumen HTML selesai dibaca
+// =========================================================
+// MENJALANKAN SELURUH KOMPONEN SAAT DOM SIAP
+// =========================================================
+
 document.addEventListener("DOMContentLoaded", () => {
   dapatkanNamaTamu();
   perbaruiCountdown();
+
+  // Proteksi seluruh gambar
+  proteksiSemuaGambar();
+
+  // Inisialisasi seluruh komponen undangan
   inisialisasiSemuaKomponen();
 });
+
