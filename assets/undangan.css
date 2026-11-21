@@ -5603,53 +5603,47 @@ button {
 
 /* 7. Closing photo frame */
 .closing-photo-frame {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  height: clamp(260px, 45vw, 360px);
-  margin: 0 auto 30px;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    height: clamp(260px, 45vw, 360px);
+    margin: 0 auto 30px;
 
-  border: 2px solid rgba(216, 167, 76, 0.75);
-  border-radius: 180px 180px 24px 24px;
-  overflow: hidden;
+    border: 2px solid rgba(216, 167, 76, 0.75);
+    border-radius: 180px 180px 24px 24px;
+    overflow: hidden;
 
-  background: #210304;
+    background: #210304;
 
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.3),
-    inset 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .closing-photo-frame img {
-  display: block;
-  width: 100%;
-  height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
 
-  object-fit: cover;
-  object-position: center;
+    object-fit: cover;
+    object-position: center;
 
-  filter: saturate(0.9) brightness(0.95);
+    /* Mengurangi kesan overexposed */
+    filter:
+        brightness(0.86)
+        contrast(1.08)
+        saturate(0.92);
 
-  transition: transform 1s ease;
+    transition: transform 1s ease;
 }
 
 .closing-photo-frame:hover img {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 /* Photo shine */
-.photo-overlay-shine {
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.16) 0%,
-    rgba(255, 255, 255, 0.03) 35%,
-    transparent 65%
-  );
-
-  pointer-events: none;
+.closing-photo-frame .photo-overlay-shine {
+    background: transparent;
 }
 
 /* 8. Signature */
